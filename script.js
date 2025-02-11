@@ -138,3 +138,46 @@ themeToggle.addEventListener('click', () => {
   });
 
   console.log('Script execution started.'); // Check if this logs
+
+// Pagination Variables
+let currentPage = 1;
+const itemsPerPage = 30;
+
+function showPage(page) {
+    const rows = document.querySelectorAll("#productTable tbody tr");
+    const totalItems = rows.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    // Update visible items
+    rows.forEach((row, index) => {
+        row.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
+    });
+
+    // Enable/Disable navigation buttons
+    document.getElementById("prevPage").disabled = page === 1;
+    document.getElementById("nextPage").disabled = page === totalPages;
+}
+
+function changePage(offset) {
+    currentPage += offset;
+    showPage(currentPage);
+}
+
+// Add pagination buttons
+document.addEventListener("DOMContentLoaded", function () {
+    const paginationContainer = document.createElement("div");
+    paginationContainer.innerHTML = `
+        <button id="prevPage" onclick="changePage(-1)">Previous</button>
+        <span id="pageInfo">Page ${currentPage}</span>
+        <button id="nextPage" onclick="changePage(1)">Next</button>
+    `;
+    paginationContainer.style.margin = "20px 0";
+    paginationContainer.style.display = "flex";
+    paginationContainer.style.justifyContent = "center";
+    paginationContainer.style.gap = "10px";
+
+    document.body.appendChild(paginationContainer);
+
+    showPage(currentPage);
+});
+
