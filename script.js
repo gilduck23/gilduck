@@ -13,20 +13,20 @@
   }
 
   function updateTable() {
-    const rows = document.querySelectorAll("#productTable tbody tr");
+    const productCards = document.querySelectorAll(".product-card"); // Pilih elemen .product-card sekarang
 
-    rows.forEach(row => {
-        const productName = row.cells[0].textContent.toLowerCase();
-        const productContent = row.cells[2].textContent.toLowerCase();
+    productCards.forEach(card => { // Loop melalui product cards, bukan rows
+        const productName = card.querySelector("h3").textContent.toLowerCase(); // Ambil teks dari h3
+        const productContent = card.querySelector("p").textContent.toLowerCase(); // Ambil teks dari p
         const matchSearch = productName.includes(currentSearch) || productContent.includes(currentSearch);
-        const matchFilter = currentFilter === '' || row.classList.contains(currentFilter);
+        const matchFilter = currentFilter === '' || card.classList.contains(currentFilter);
 
         if (currentSearch !== '') {
             // Show rows that match the search, ignoring the filter
-            row.classList.toggle('hidden', !matchSearch);
+            card.classList.toggle('hidden', !matchSearch); // Tampilkan/sembunyikan card
         } else {
             // Show rows that match the filter when there's no search
-            row.classList.toggle('hidden', !matchFilter);
+            card.classList.toggle('hidden', !matchFilter); // Tampilkan/sembunyikan card
         }
     });
 }
