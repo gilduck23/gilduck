@@ -296,7 +296,6 @@ footer.dark-theme {
 }
 
 /* ... semua CSS sebelumnya ... */
-
 /* Style for the theme toggle button yang dipercantik (lingkaran animasi) */
 #theme-toggle {
     position: fixed;
@@ -327,7 +326,7 @@ footer.dark-theme {
 }
 
 #theme-toggle.dark-theme::before {
-    content: '🌙'; /* Mengganti ikon matahari dengan bulan saat tema gelap */
+    content: '☾'; /* Ikon bulan Unicode yang lebih modern */
 }
 
 /* Menghilangkan gaya lama toggle switch (jika masih ada) */
