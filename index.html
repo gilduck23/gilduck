@@ -545,7 +545,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         // Global variables for search and filter
         let currentSearch = '';
         let currentFilter = '';
@@ -566,10 +566,15 @@
             rows.forEach(row => {
                 const productName = row.cells[0].textContent.toLowerCase();
                 const productContent = row.cells[2].textContent.toLowerCase();
-                const matchFilter = currentFilter === '' || row.classList.contains(currentFilter);
                 const matchSearch = productName.includes(currentSearch) || productContent.includes(currentSearch);
 
-                if (matchFilter && matchSearch) {
+                let matchFilter = true; // Default to true if no filter is selected
+
+                if (currentFilter !== '') {
+                    matchFilter = row.classList.contains(currentFilter);
+                }
+
+                if (matchFilter && (currentSearch === '' || matchSearch)) {
                     row.classList.remove('hidden');
                 } else {
                     row.classList.add('hidden');
