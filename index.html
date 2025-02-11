@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabel Produk dengan Filter dan Gambar</title>
+    <title>Daftar Produk</title>
     <style>
-        /* Latar Belakang Halaman */
+        /* General Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -13,14 +14,12 @@
             background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%);
             color: #4A5568;
             text-align: center;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* Header */
         h1 {
             font-size: 3rem;
             margin: 30px 0;
@@ -34,17 +33,23 @@
             border: 2px solid rgba(138, 170, 229, 0.3);
         }
 
-<!-- Tambahkan input search di bawah header -->
-<div class="search-container" style="margin: 20px 0;">
-    <input type="text" id="searchInput" placeholder="Cari produk..." 
-           style="padding: 12px 25px; border: 2px solid #8AAAE5; border-radius: 30px; 
-                  width: 300px; max-width: 80%; background: rgba(255,255,255,0.9);
-                  backdrop-filter: blur(5px); transition: all 0.3s ease;"
-           onkeyup="searchProducts()">
-</div>
+        /* Search Input */
+        .search-container {
+            margin: 20px 0;
+        }
 
+        .search-container input[type="text"] {
+            padding: 12px 25px;
+            border: 2px solid #8AAAE5;
+            border-radius: 30px;
+            width: 300px;
+            max-width: 80%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
 
-        /* Tombol Filter */
+        /* Filter Buttons */
         .filter-buttons {
             margin-bottom: 30px;
             display: flex;
@@ -52,6 +57,7 @@
             justify-content: center;
             gap: 15px;
         }
+
         .filter-buttons button {
             padding: 12px 25px;
             border: 2px solid #8AAAE5;
@@ -64,6 +70,7 @@
             font-weight: 500;
             backdrop-filter: blur(5px);
         }
+
         .filter-buttons button:hover {
             background: #8AAAE5;
             color: white;
@@ -71,7 +78,7 @@
             box-shadow: 0 5px 15px rgba(138, 170, 229, 0.3);
         }
 
-/* Tabel */
+        /* Table Styles */
         table {
             width: 90%;
             border-collapse: collapse;
@@ -83,22 +90,26 @@
             box-shadow: 0 10px 30px rgba(138, 170, 229, 0.1);
             border: 1px solid rgba(138, 170, 229, 0.2);
         }
-        th, td {
+
+        th,
+        td {
             padding: 18px;
             text-align: left;
             font-size: 1rem;
             border-bottom: 1px solid rgba(138, 170, 229, 0.1);
         }
+
         th {
             background: #F8FAFF;
             color: #4A5568;
             font-weight: 600;
         }
+
         tr:hover {
             background: rgba(138, 170, 229, 0.05);
         }
 
-        /* Kolom Gambar */
+        /* Image Column */
         td img {
             width: 100px;
             height: 100px;
@@ -107,15 +118,17 @@
             border: 2px solid rgba(138, 170, 229, 0.2);
             transition: all 0.3s ease;
         }
+
         td img:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(138, 170, 229, 0.2);
         }
 
-        /* Animasi Hover */
+        /* Hover Animation */
         td {
             transition: all 0.3s ease;
         }
+
         td:hover {
             transform: translateX(10px);
             background: #f8f8f8;
@@ -127,45 +140,15 @@
         }
 
         /* Footer */
-         footer {
+        footer {
+            margin-top: auto; /* Stick the footer to the bottom */
             margin: 30px 0;
             font-size: 0.9rem;
             color: #4A5568;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        
-        /* Media Queries */
-        @media (max-width: 768px) {
-            table {
-                width: 90%;
-                margin: 0 auto;
-            }
-            th, td {
-                padding: 15px;
-                font-size: 0.9rem;
-            }
-            td img {
-                max-width: 80px;
-                max-height: 80px;
-            }
-        }
 
-/* Media Queries */
-        @media (max-width: 768px) {
-    .filter-buttons {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .filter-buttons button {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-        width: auto;
-        min-width: 100px;
-    }
-}
-
-		
-        /* Modal */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -178,6 +161,7 @@
             align-items: center;
             z-index: 1000;
         }
+
         .modal-content {
             max-width: 90%;
             max-height: 90%;
@@ -186,11 +170,13 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
+
         .modal-image {
             width: 100%;
             height: auto;
             cursor: pointer;
         }
+
         .close-modal {
             position: absolute;
             top: 15px;
@@ -201,65 +187,45 @@
             z-index: 1001;
         }
 
-        /* Font Import */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%; /* Full width on smaller screens */
+                margin: 15px auto;
+            }
+
+            th,
+            td {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            td img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-buttons button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                width: auto;
+                min-width: 80px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <h1>Daftar Produk</h1>
-    
-    <!-- Tambahkan input search di bawah header -->
-<div class="search-container" style="margin: 20px 0;">
-    <input type="text" id="searchInput" placeholder="Cari produk..." 
-           style="padding: 12px 25px; border: 2px solid #8AAAE5; border-radius: 30px; 
-                  width: 300px; max-width: 80%; background: rgba(255,255,255,0.9);
-                  backdrop-filter: blur(5px); transition: all 0.3s ease;"
-           onkeyup="searchProducts()">
-</div>
 
-<script>
-    // Tambahkan variabel global untuk pencarian
-    let currentSearch = '';
-    let currentFilter = '';
-
-    // Modifikasi fungsi filter untuk menggabungkan dengan pencarian
-    function filterTable(filter) {
-        currentFilter = filter;
-        updateTable();
-    }
-
-    // Fungsi pencarian baru
-    function searchProducts() {
-        currentSearch = document.getElementById('searchInput').value.trim().toLowerCase();
-        updateTable();
-    }
-
-    // Fungsi update gabungan untuk filter dan pencarian
-    function updateTable() {
-        const rows = document.querySelectorAll("#productTable tbody tr");
-        
-        rows.forEach(row => {
-            const productName = row.cells[0].textContent.toLowerCase();
-            const productContent = row.cells[2].textContent.toLowerCase();
-            
-            const matchFilter = currentFilter === '' || row.classList.contains(currentFilter);
-            const matchSearch = productName.includes(currentSearch) || 
-                              productContent.includes(currentSearch);
-            
-            if(matchFilter && matchSearch) {
-                row.classList.remove('hidden');
-            } else {
-                row.classList.add('hidden');
-            }
-        });
-    }
-
-    // Update inisialisasi awal
-    document.addEventListener('DOMContentLoaded', () => {
-        filterTable('');
-    });
-</script>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="searchProducts()">
+    </div>
 
     <div class="filter-buttons">
         <button onclick="filterTable('d-series')">D Series</button>
@@ -281,332 +247,337 @@
             <!-- D Series -->
             <tr class="d-series">
                 <td>D1</td>
-                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739191970/d1_hcux42.webp" alt="D1"></td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739191970/d1_hcux42.webp" alt="D1" onclick="openModal(this.src, this.alt)"></td>
                 <td>3 Putih + Emas + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D2</td>
-                <td><img src="https://i.imgur.com/7g7lvvo.jpg" alt="D2"></td>
+                <td><img src="https://i.imgur.com/7g7lvvo.jpg" alt="D2" onclick="openModal(this.src, this.alt)"></td>
                 <td>5 Putih + Emas + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D3</td>
-                <td><img src="https://i.imgur.com/8DZ79n9.jpg" alt="D3"></td>
+                <td><img src="https://i.imgur.com/8DZ79n9.jpg" alt="D3" onclick="openModal(this.src, this.alt)"></td>
                 <td>3 Putih + Hitam + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D4</td>
-                <td><img src="https://i.imgur.com/bDzl8YW.jpg" alt="D4"></td>
+                <td><img src="https://i.imgur.com/bDzl8YW.jpg" alt="D4" onclick="openModal(this.src, this.alt)"></td>
                 <td>5 Putih + Hitam + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D5</td>
-                <td><img src="https://i.imgur.com/ldyeb9o.jpg" alt="D5"></td>
+                <td><img src="https://i.imgur.com/ldyeb9o.jpg" alt="D5" onclick="openModal(this.src, this.alt)"></td>
                 <td>3 Hitam + Emas + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D6</td>
-                <td><img src="https://i.imgur.com/JPPDMwx.jpg" alt="D6"></td>
+                <td><img src="https://i.imgur.com/JPPDMwx.jpg" alt="D6" onclick="openModal(this.src, this.alt)"></td>
                 <td>5 Hitam + Emas + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D7</td>
-                <td><img src="https://i.imgur.com/xlvaYRW.jpg" alt="D7"></td>
+                <td><img src="https://i.imgur.com/xlvaYRW.jpg" alt="D7" onclick="openModal(this.src, this.alt)"></td>
                 <td>3 Hitam + Hitam + Hangtag</td>
             </tr>
             <tr class="d-series">
                 <td>D8</td>
-                <td><img src="https://i.imgur.com/fF0ayei.jpg" alt="D8"></td>
+                <td><img src="https://i.imgur.com/fF0ayei.jpg" alt="D8" onclick="openModal(this.src, this.alt)"></td>
                 <td>5 Hitam + Hitam + Hangtag</td>
             </tr>
 
 
             <!-- B Series -->
-<tr class="b-series">
-    <td>B1</td>
-    <td><img src="https://i.imgur.com/B9VoERG.jpg" alt="B1"></td>
-    <td>3 Hitam + Emas</td>
-</tr>
-<tr class="b-series">
-    <td>B2</td>
-    <td><img src="https://i.imgur.com/dt3Evi0.jpg" alt="B2"></td>
-    <td>5 Hitam + Emas</td>
-</tr>
-<tr class="b-series">
-    <td>B3</td>
-    <td><img src="https://i.imgur.com/Dn4vDIS.jpg" alt="B3"></td>
-    <td>3 Putih + Emas</td>
-</tr>
-<tr class="b-series">
-    <td>B4</td>
-    <td><img src="https://i.imgur.com/ef1hkZ6.jpg" alt="B4"></td>
-    <td>5 Putih + Emas</td>
-</tr>
-<tr class="b-series">
-    <td>B5</td>
-    <td><img src="https://i.imgur.com/VfLoEiJ.jpg" alt="B5"></td>
-    <td>3 Putih + Hitam</td>
-</tr>
-<tr class="b-series">
-    <td>B6</td>
-    <td><img src="https://i.imgur.com/FGdXoAo.jpg" alt="B6"></td>
-    <td>5 Putih + Hitam</td>
-</tr>
-<tr class="b-series">
-    <td>B7</td>
-    <td><img src="https://i.imgur.com/3qQomol.jpg" alt="B7"></td>
-    <td>3 Hitam + Hitam</td>
-</tr>
-<tr class="b-series">
-    <td>B8</td>
-    <td><img src="https://i.imgur.com/3ABMKui.jpg" alt="B8"></td>
-    <td>5 Hitam + Hitam</td>
-</tr>
+            <tr class="b-series">
+                <td>B1</td>
+                <td><img src="https://i.imgur.com/B9VoERG.jpg" alt="B1" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Hitam + Emas</td>
+            </tr>
+            <tr class="b-series">
+                <td>B2</td>
+                <td><img src="https://i.imgur.com/dt3Evi0.jpg" alt="B2" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Hitam + Emas</td>
+            </tr>
+            <tr class="b-series">
+                <td>B3</td>
+                <td><img src="https://i.imgur.com/Dn4vDIS.jpg" alt="B3" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Putih + Emas</td>
+            </tr>
+            <tr class="b-series">
+                <td>B4</td>
+                <td><img src="https://i.imgur.com/ef1hkZ6.jpg" alt="B4" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Putih + Emas</td>
+            </tr>
+            <tr class="b-series">
+                <td>B5</td>
+                <td><img src="https://i.imgur.com/VfLoEiJ.jpg" alt="B5" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Putih + Hitam</td>
+            </tr>
+            <tr class="b-series">
+                <td>B6</td>
+                <td><img src="https://i.imgur.com/FGdXoAo.jpg" alt="B6" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Putih + Hitam</td>
+            </tr>
+            <tr class="b-series">
+                <td>B7</td>
+                <td><img src="https://i.imgur.com/3qQomol.jpg" alt="B7" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Hitam + Hitam</td>
+            </tr>
+            <tr class="b-series">
+                <td>B8</td>
+                <td><img src="https://i.imgur.com/3ABMKui.jpg" alt="B8" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Hitam + Hitam</td>
+            </tr>
 
             <!-- HP Series -->
             <tr class="hp-series">
                 <td>HP01</td>
-                <td><img src="https://i.imgur.com/VmXwTQG.jpg" alt="HP01"></td>
+                <td><img src="https://i.imgur.com/VmXwTQG.jpg" alt="HP01" onclick="openModal(this.src, this.alt)"></td>
                 <td>Hitam</td>
             </tr>
             <tr class="hp-series">
                 <td>HP02</td>
-                <td><img src="https://i.imgur.com/wcv7oHz.jpg" alt="HP02"></td>
+                <td><img src="https://i.imgur.com/wcv7oHz.jpg" alt="HP02" onclick="openModal(this.src, this.alt)"></td>
                 <td>Putih</td>
             </tr>
             <tr class="hp-series">
                 <td>HP03</td>
-                <td><img src="https://i.imgur.com/6wwpahF.jpg" alt="HP03"></td>
+                <td><img src="https://i.imgur.com/6wwpahF.jpg" alt="HP03" onclick="openModal(this.src, this.alt)"></td>
                 <td>Merah</td>
             </tr>
 
             <!-- C Series -->
-<tr class="c-series">
-    <td>C1</td>
-    <td><img src="https://i.imgur.com/LghwQOT.jpg" alt="C1"></td>
-    <td>3 Putih + Emas + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C2</td>
-    <td><img src="https://i.imgur.com/aJqqKI2.jpg" alt="C2"></td>
-    <td>3 Putih + Hitam + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C3</td>
-    <td><img src="https://i.imgur.com/0LCqyiQ.jpg" alt="C3"></td>
-    <td>5 Putih + Emas + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C4</td>
-    <td><img src="https://i.imgur.com/4L3w2k3.jpg" alt="C4"></td>
-    <td>5 Putih + Hitam + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C5</td>
-    <td><img src="https://i.imgur.com/85zcGiK.jpg" alt="C5"></td>
-    <td>3 Hitam + Emas + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C6</td>
-    <td><img src="https://i.imgur.com/TbNPFvG.jpg" alt="C6"></td>
-    <td>3 Hitam + Hitam + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C7</td>
-    <td><img src="https://i.imgur.com/kjiY4Kj.jpg" alt="C7"></td>
-    <td>5 Hitam + Emas + Barcode</td>
-</tr>
-<tr class="c-series">
-    <td>C8</td>
-    <td><img src="https://i.imgur.com/Ax0rG1X.jpg" alt="C8"></td>
-    <td>5 Hitam + Hitam + Barcode</td>
-</tr>
+            <tr class="c-series">
+                <td>C1</td>
+                <td><img src="https://i.imgur.com/LghwQOT.jpg" alt="C1" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Putih + Emas + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C2</td>
+                <td><img src="https://i.imgur.com/aJqqKI2.jpg" alt="C2" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Putih + Hitam + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C3</td>
+                <td><img src="https://i.imgur.com/0LCqyiQ.jpg" alt="C3" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Putih + Emas + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C4</td>
+                <td><img src="https://i.imgur.com/4L3w2k3.jpg" alt="C4" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Putih + Hitam + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C5</td>
+                <td><img src="https://i.imgur.com/85zcGiK.jpg" alt="C5" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Hitam + Emas + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C6</td>
+                <td><img src="https://i.imgur.com/TbNPFvG.jpg" alt="C6" onclick="openModal(this.src, this.alt)"></td>
+                <td>3 Hitam + Hitam + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C7</td>
+                <td><img src="https://i.imgur.com/kjiY4Kj.jpg" alt="C7" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Hitam + Emas + Barcode</td>
+            </tr>
+            <tr class="c-series">
+                <td>C8</td>
+                <td><img src="https://i.imgur.com/Ax0rG1X.jpg" alt="C8" onclick="openModal(this.src, this.alt)"></td>
+                <td>5 Hitam + Hitam + Barcode</td>
+            </tr>
 
 
             <!-- Stiker Series -->
             <!-- Stiker Series -->
-<tr class="stiker-series">
-    <td>Set 5</td>
-    <td><img src="https://i.ibb.co/232PJnJ8/07e3093ad02f.jpg" alt="Set 5"></td>
-    <td>Set 5</td>
-</tr>
-<tr class="stiker-series">
-    <td>Set 7</td>
-    <td><img src="https://i.ibb.co/cSvWHyKL/21ccd0aaf8ec.jpg" alt="Set 7"></td>
-    <td>Set 7</td>
-</tr>
-<tr class="stiker-series">
-    <td>Set 9</td>
-    <td><img src="https://i.ibb.co/W4Rtrj4z/4be49e8a5127.jpg" alt="Set 9"></td>
-    <td>Set 9</td>
-</tr>
-<tr class="stiker-series">
-    <td>Thankyou 500</td>
-    <td><img src="https://i.ibb.co/SD42RM5p/da62fb2b70ca.jpg" alt="Thankyou 500"></td>
-    <td>Stiker thankyou isi 500</td>
-</tr>
-<tr class="stiker-series">
-    <td>Open Me</td>
-    <td><img src="https://i.ibb.co/Zz7PYShx/d2bedd009493.jpg" alt="Open Me"></td>
-    <td>Stiker Open Me</td>
-</tr>
-<tr class="stiker-series">
-    <td>Home Made</td>
-    <td><img src="https://i.imgur.com/8yvc9NZ.jpg" alt="Home Made"></td>
-    <td>Stiker Home Made</td>
-</tr>
+            <tr class="stiker-series">
+                <td>Set 5</td>
+                <td><img src="https://i.ibb.co/232PJnJ8/07e3093ad02f.jpg" alt="Set 5" onclick="openModal(this.src, this.alt)"></td>
+                <td>Set 5</td>
+            </tr>
+            <tr class="stiker-series">
+                <td>Set 7</td>
+                <td><img src="https://i.ibb.co/cSvWHyKL/21ccd0aaf8ec.jpg" alt="Set 7" onclick="openModal(this.src, this.alt)"></td>
+                <td>Set 7</td>
+            </tr>
+            <tr class="stiker-series">
+                <td>Set 9</td>
+                <td><img src="https://i.ibb.co/W4Rtrj4z/4be49e8a5127.jpg" alt="Set 9" onclick="openModal(this.src, this.alt)"></td>
+                <td>Set 9</td>
+            </tr>
+            <tr class="stiker-series">
+                <td>Thankyou 500</td>
+                <td><img src="https://i.ibb.co/SD42RM5p/da62fb2b70ca.jpg" alt="Thankyou 500" onclick="openModal(this.src, this.alt)"></td>
+                <td>Stiker thankyou isi 500</td>
+            </tr>
+            <tr class="stiker-series">
+                <td>Open Me</td>
+                <td><img src="https://i.ibb.co/Zz7PYShx/d2bedd009493.jpg" alt="Open Me" onclick="openModal(this.src, this.alt)"></td>
+                <td>Stiker Open Me</td>
+            </tr>
+            <tr class="stiker-series">
+                <td>Home Made</td>
+                <td><img src="https://i.imgur.com/8yvc9NZ.jpg" alt="Home Made" onclick="openModal(this.src, this.alt)"></td>
+                <td>Stiker Home Made</td>
+            </tr>
 
-<tr class="stiker-series">
-    <td>Thankyou</td>
-    <td><img src="https://i.ibb.co/jXnQcdF/3c4afc7608c8.jpg" alt="Thankyou"></td>
-    <td>Stiker Thankyou</td>
-</tr>
+            <tr class="stiker-series">
+                <td>Thankyou</td>
+                <td><img src="https://i.ibb.co/jXnQcdF/3c4afc7608c8.jpg" alt="Thankyou" onclick="openModal(this.src, this.alt)"></td>
+                <td>Stiker Thankyou</td>
+            </tr>
 
-<!-- Kwitansi PPL Mini -->
-<tr class="kwitansi-ppl-mini">
-    <td>Kwitansi PPL Mini</td>
-    <td><img src="https://i.imgur.com/Ioo9Ea5.png" alt="Kwitansi PPL Mini"></td>
-    <td>Kwitansi PPL Mini</td>
-</tr>
+            <!-- Kwitansi PPL Mini -->
+            <tr class="kwitansi-ppl-mini">
+                <td>Kwitansi PPL Mini</td>
+                <td><img src="https://i.imgur.com/Ioo9Ea5.png" alt="Kwitansi PPL Mini" onclick="openModal(this.src, this.alt)"></td>
+                <td>Kwitansi PPL Mini</td>
+            </tr>
 
-<!-- Isolasi STAR -->
-<tr class="isolasi-star">
-    <td>Isolasi STAR</td>
-    <td><img src="https://i.imgur.com/Jtw1hg7.png" alt="Isolasi STAR"></td>
-    <td>Isolasi STAR</td>
-</tr>
+            <!-- Isolasi STAR -->
+            <tr class="isolasi-star">
+                <td>Isolasi STAR</td>
+                <td><img src="https://i.imgur.com/Jtw1hg7.png" alt="Isolasi STAR" onclick="openModal(this.src, this.alt)"></td>
+                <td>Isolasi STAR</td>
+            </tr>
 
-<!-- Lakban Fresh Vegetables -->
-<tr class="lakban-fresh-vegetables">
-    <td>Lakban Fresh Vegetables</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/f_auto/v1739194222/6193f204-9339-4a74-b439-3f4d1693deba_cf68se.jpg
-" alt="Lakban Fresh Vegetables"></td>
-    <td>Lakban Fresh Vegetables</td>
-</tr>
-<!-- HARGA POLOS -->
-<tr class="HARGA POLOS">
-    <td>HARGA POLOS</td>
-    <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS"></td>
-    <td>HARGA POLOS</td>
-</tr>
-<!-- BRG YG SUDAH DIBELI -->
-<tr class="BRG YG SUDAH DIBELI">
-    <td>BRG YG SUDAH DIBELI</td>
-    <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lpenjpnnrdlac1" alt="HARGA POLOS"></td>
-    <td>BRG YG SUDAH DIBELI</td>
-</tr>
-<tr class="Kertas Aluminium Foil BESTFRESH">
-    <td>Kertas Aluminium Foil BESTFRESH</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739194922/id-11134207-7r98v-lxugklejdq96cc_resize_w450_nl_dl20of.webp" alt="Kertas Aluminium Foil BESTFRESH"></td>
-    <td>Kertas Aluminium Foil BESTFRESH</td>
-</tr>		
-<!-- HARGA POLOS -->
-<tr class="HARGA POLOS">
-    <td>HARGA POLOS</td>
-    <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS"></td>
-    <td>HARGA POLOS</td>
-</tr>
-<!-- HARGA POLOS -->
-<tr class="HARGA POLOS">
-    <td>HARGA POLOS</td>
-    <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS"></td>
-    <td>HARGA POLOS</td>
-</tr>
-<!-- Produk Baru -->
-<tr class="new-product">
-    <td>Spidol PM 31-32-33</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739195786/id-11134207-7r98w-lwf2rhoz5c9n7c_resize_w450_nl_gxiki7.webp" alt="Spidol PM 31-32-33"></td>
-    <td>Spidol Joyko PM Hitam Biru Merah</td>
-</tr>
-<tr class="new-product">
-    <td>Spidol PM 34-35-36</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739196116/id-11134207-7r98t-loddhv6zz2ps62_resize_w450_nl_botxoz.webp" alt="Spidol PM 34-35-36"></td>
-    <td>Spidol Joyko PM Hitam Biru Merah</td>
-</tr>
-<tr class="new-product">
-    <td>Spidol AG12</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197533/id-11134207-7qul7-lgvq1e0epe1fa1_resize_w450_nl_k0aioa.webp" alt="Spidol AG12"></td>
-    <td>Paket isi 5 pcs Spidol AG12</td>
-</tr>
-<tr class="new-product">
-    <td>STABILLO HIGHLIGHTER</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197735/id-11134207-7qul3-lig0hjcm5ogxe3_resize_w450_nl_wntmbm.webp" alt="STABILLO HIGHLIGHTER"></td>
-    <td>STABILLO HIGHLIGHTER</td>
-</tr>
-<tr class="new-product">
-    <td>Spidol SPM-88</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197837/id-11134207-7rasj-m4s5clt4gcdfb9_resize_w450_nl_ew6ftr.webp" alt="Spidol SPM-88"></td>
-    <td>Spidol SPM-88</td>
-</tr>
-<tr class="new-product">
-    <td>Spidol Tahan Air</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197898/id-11134207-7ras9-m49qro5kgtka22_resize_w450_nl_afsvum.webp" alt="Spidol Tahan Air"></td>
-    <td>Spidol Tahan Air</td>
-</tr>
-<tr class="new-product">
-    <td>Metallic Craftwork</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198201/id-11134207-7rasl-m2klz5xm5kov88_resize_w450_nl_ddlfhf.webp" alt="Metallic Craftwork"></td>
-    <td>Metallic Craftwork</td>
-</tr>
-<tr class="new-product">
-    <td>2 PCS Spidol Kecil</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198371/id-11134207-7r98o-lo0iqjbmvikab6_resize_w450_nl_yct9v6.webp" alt="2 PCS Spidol Kecil"></td>
-    <td>ARTLINE Pencil Marker EK-316</td>
-</tr>
-<tr class="new-product">
-    <td>Penghapus Spidol Papan Tulis</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198432/id-11134207-7r98t-lvsku5p9ajw9e5_resize_w450_nl_wtuz2w.webp" alt="Penghapus Spidol Papan Tulis"></td>
-    <td>JOYKO WE-3</td>
-</tr>
-<tr class="new-product">
-    <td>Jililai 3in1 Alat Cukur Jenggot</td>
-    <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198527/id-11134207-7rasg-m57wvi07jajaa1_resize_w450_nl_u8iprr.webp" alt="Jililai 3in1 Alat Cukur Jenggot"></td>
-    <td>Jililai 3in1 Alat Cukur Jenggot</td>
-</tr>		
-
-
-
-
-
+            <!-- Lakban Fresh Vegetables -->
+            <tr class="lakban-fresh-vegetables">
+                <td>Lakban Fresh Vegetables</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/f_auto/v1739194222/6193f204-9339-4a74-b439-3f4d1693deba_cf68se.jpg
+" alt="Lakban Fresh Vegetables" onclick="openModal(this.src, this.alt)"></td>
+                <td>Lakban Fresh Vegetables</td>
+            </tr>
+            <!-- HARGA POLOS -->
+            <tr class="HARGA POLOS">
+                <td>HARGA POLOS</td>
+                <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)"></td>
+                <td>HARGA POLOS</td>
+            </tr>
+            <!-- BRG YG SUDAH DIBELI -->
+            <tr class="BRG YG SUDAH DIBELI">
+                <td>BRG YG SUDAH DIBELI</td>
+                <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lpenjpnnrdlac1" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)"></td>
+                <td>BRG YG SUDAH DIBELI</td>
+            </tr>
+            <tr class="Kertas Aluminium Foil BESTFRESH">
+                <td>Kertas Aluminium Foil BESTFRESH</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739194922/id-11134207-7r98v-lxugklejdq96cc_resize_w450_nl_dl20of.webp" alt="Kertas Aluminium Foil BESTFRESH" onclick="openModal(this.src, this.alt)"></td>
+                <td>Kertas Aluminium Foil BESTFRESH</td>
+            </tr>
+            <!-- HARGA POLOS -->
+            <tr class="HARGA POLOS">
+                <td>HARGA POLOS</td>
+                <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)"></td>
+                <td>HARGA POLOS</td>
+            </tr>
+            <!-- HARGA POLOS -->
+            <tr class="HARGA POLOS">
+                <td>HARGA POLOS</td>
+                <td><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)"></td>
+                <td>HARGA POLOS</td>
+            </tr>
+            <!-- Produk Baru -->
+            <tr class="new-product">
+                <td>Spidol PM 31-32-33</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739195786/id-11134207-7r98w-lwf2rhoz5c9n7c_resize_w450_nl_gxiki7.webp" alt="Spidol PM 31-32-33" onclick="openModal(this.src, this.alt)"></td>
+                <td>Spidol Joyko PM Hitam Biru Merah</td>
+            </tr>
+            <tr class="new-product">
+                <td>Spidol PM 34-35-36</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739196116/id-11134207-7r98t-loddhv6zz2ps62_resize_w450_nl_botxoz.webp" alt="Spidol PM 34-35-36" onclick="openModal(this.src, this.alt)"></td>
+                <td>Spidol Joyko PM Hitam Biru Merah</td>
+            </tr>
+            <tr class="new-product">
+                <td>Spidol AG12</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197533/id-11134207-7qul7-lgvq1e0epe1fa1_resize_w450_nl_k0aioa.webp" alt="Spidol AG12" onclick="openModal(this.src, this.alt)"></td>
+                <td>Paket isi 5 pcs Spidol AG12</td>
+            </tr>
+            <tr class="new-product">
+                <td>STABILLO HIGHLIGHTER</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197735/id-11134207-7qul3-lig0hjcm5ogxe3_resize_w450_nl_wntmbm.webp" alt="STABILLO HIGHLIGHTER" onclick="openModal(this.src, this.alt)"></td>
+                <td>STABILLO HIGHLIGHTER</td>
+            </tr>
+            <tr class="new-product">
+                <td>Spidol SPM-88</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197837/id-11134207-7rasj-m4s5clt4gcdfb9_resize_w450_nl_ew6ftr.webp" alt="Spidol SPM-88" onclick="openModal(this.src, this.alt)"></td>
+                <td>Spidol SPM-88</td>
+            </tr>
+            <tr class="new-product">
+                <td>Spidol Tahan Air</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197898/id-11134207-7ras9-m49qro5kgtka22_resize_w450_nl_afsvum.webp" alt="Spidol Tahan Air" onclick="openModal(this.src, this.alt)"></td>
+                <td>Spidol Tahan Air</td>
+            </tr>
+            <tr class="new-product">
+                <td>Metallic Craftwork</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198201/id-11134207-7rasl-m2klz5xm5kov88_resize_w450_nl_ddlfhf.webp" alt="Metallic Craftwork" onclick="openModal(this.src, this.alt)"></td>
+                <td>Metallic Craftwork</td>
+            </tr>
+            <tr class="new-product">
+                <td>2 PCS Spidol Kecil</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198371/id-11134207-7r98o-lo0iqjbmvikab6_resize_w450_nl_yct9v6.webp" alt="2 PCS Spidol Kecil" onclick="openModal(this.src, this.alt)"></td>
+                <td>ARTLINE Pencil Marker EK-316</td>
+            </tr>
+            <tr class="new-product">
+                <td>Penghapus Spidol Papan Tulis</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198432/id-11134207-7r98t-lvsku5p9ajw9e5_resize_w450_nl_wtuz2w.webp" alt="Penghapus Spidol Papan Tulis" onclick="openModal(this.src, this.alt)"></td>
+                <td>JOYKO WE-3</td>
+            </tr>
+            <tr class="new-product">
+                <td>Jililai 3in1 Alat Cukur Jenggot</td>
+                <td><img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198527/id-11134207-7rasg-m57wvi07jajaa1_resize_w450_nl_u8iprr.webp" alt="Jililai 3in1 Alat Cukur Jenggot" onclick="openModal(this.src, this.alt)"></td>
+                <td>Jililai 3in1 Alat Cukur Jenggot</td>
+            </tr>
 
 
         </tbody>
     </table>
 
     <footer>
-        &copy; 2025 Daftar Produk | Dibuat oleh Gilduck
+        © 2025 Daftar Produk | Dibuat oleh Gilduck
     </footer>
 
     <div class="modal" onclick="closeModal()">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <span class="close-modal" onclick="closeModal()">×</span>
         <div class="modal-content">
             <img class="modal-image" id="modalImage" src="" alt="Modal Image">
         </div>
     </div>
 
     <script>
-        // Fungsi untuk filter tabel
+        // Global variables for search and filter
+        let currentSearch = '';
+        let currentFilter = '';
+
         function filterTable(filter) {
+            currentFilter = filter;
+            updateTable();
+        }
+
+        function searchProducts() {
+            currentSearch = document.getElementById('searchInput').value.trim().toLowerCase();
+            updateTable();
+        }
+
+        function updateTable() {
             const rows = document.querySelectorAll("#productTable tbody tr");
+
             rows.forEach(row => {
-                if (filter === '') {
+                const productName = row.cells[0].textContent.toLowerCase();
+                const productContent = row.cells[2].textContent.toLowerCase();
+                const matchFilter = currentFilter === '' || row.classList.contains(currentFilter);
+                const matchSearch = productName.includes(currentSearch) || productContent.includes(currentSearch);
+
+                if (matchFilter && matchSearch) {
                     row.classList.remove('hidden');
                 } else {
-                    if (row.classList.contains(filter)) {
-                        row.classList.remove('hidden');
-                    } else {
-                        row.classList.add('hidden');
-                    }
+                    row.classList.add('hidden');
                 }
             });
         }
 
-        // Tampilkan semua produk saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', () => {
-            filterTable('');
-        });
-
-        // Fungsi untuk membuka modal
+        // Modal functions
         function openModal(src, alt) {
             const modal = document.querySelector('.modal');
             const modalImage = document.getElementById('modalImage');
@@ -615,19 +586,17 @@
             modal.style.display = 'flex';
         }
 
-        // Fungsi untuk menutup modal
         function closeModal() {
             const modal = document.querySelector('.modal');
             modal.style.display = 'none';
         }
 
-        // Menambahkan event listener pada gambar
-        document.querySelectorAll('td img').forEach(img => {
-            img.addEventListener('click', () => {
-                openModal(img.src, img.alt);
-            });
+        // Initial setup after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            filterTable('');
         });
     </script>
 
 </body>
+
 </html>
