@@ -297,169 +297,40 @@ footer.dark-theme {
 
 /* ... semua CSS sebelumnya ... */
 
-/* Style for the theme toggle switch yang dipercantik seperti gambar */
-.theme-toggle-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: fixed; /* Tetap di posisi */
-    top: 15px;
-    right: 15px;
-    z-index: 100;
-    padding: 10px; /* Tambahkan padding di sekitar container tombol */
-    background-color: rgba(255, 255, 255, 0.1); /* Latar belakang semi-transparan untuk area sentuh yang lebih besar */
-    border-radius: 40px; /* Border radius yang lebih besar untuk area sentuh */
-    backdrop-filter: blur(10px); /* Efek blur untuk latar belakang */
-}
-
-.theme-label {
-    font-size: 0.9em;
-    color: #4A5568;
-    transition: color 0.3s ease;
-}
-
-.theme-label.dark-theme {
-    color: #ddd;
-}
-
-.day-label {
-    display: inline; /* Tampilkan DAYMODE label saat tema terang */
-}
-
-.night-label {
-    display: none; /* Sembunyikan NIGHTMODE label default */
-}
-
-.dark-theme .day-label {
-    display: none; /* Sembunyikan DAYMODE label saat tema gelap */
-}
-
-.dark-theme .night-label {
-    display: inline; /* Tampilkan NIGHTMODE label saat tema gelap */
-}
-
-
-/* The switch - the box around the slider */
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 70px; /* Lebar switch sedikit lebih besar */
-    height: 40px; /* Tinggi switch sedikit lebih besar */
-}
-
-/* Hide default HTML checkbox */
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The slider */
-.slider {
-    position: absolute;
+/* Style for the theme toggle button yang dipercantik (lingkaran animasi) */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px; /* Ukuran tombol lingkaran */
+    height: 40px;
+    border-radius: 50%; /* Membuat tombol lingkaran */
+    background-color: #E6F0FF; /* Warna latar belakang tema terang */
+    color: #FFC107; /* Warna ikon matahari tema terang */
+    border: none;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #E6F0FF; /* Warna latar belakang switch tema terang */
-    transition: .4s;
-    border-radius: 34px; /* Membuat ujung membulat */
-    border: 2px solid #8AAAE5; /* Border switch tema terang */
+    font-size: 1.5em; /* Ukuran ikon */
     display: flex;
     align-items: center;
-    padding: 4px; /* Ruang di dalam slider */
-    justify-content: flex-start; /* Slider awal di kiri (tema terang) */
+    justify-content: center;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease; /* Animasi transisi */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Tambahkan sedikit shadow */
 }
 
-.slider.dark-theme {
-    background-color: #333; /* Warna latar belakang switch tema gelap */
-    border: 2px solid #777; /* Border switch tema gelap */
+#theme-toggle:hover {
+    transform: scale(1.1); /* Efek hover sedikit membesar */
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 32px; /* Ukuran slider handle disesuaikan */
-    width: 32px; /* Ukuran slider handle disesuaikan */
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%; /* Membuat slider bulat */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow pada slider */
+#theme-toggle.dark-theme {
+    background-color: #333; /* Warna latar belakang tema gelap */
+    color: #eee; /* Warna ikon bulan tema gelap */
 }
 
-.dark-theme .slider:before {
-    transform: translateX(30px); /* Geser slider ke kanan (tema gelap) */
+#theme-toggle.dark-theme::before {
+    content: '🌙'; /* Mengganti ikon matahari dengan bulan saat tema gelap */
 }
 
-
-/* Icons inside the slider */
-.day-icon, .night-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.3em;
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-.day-icon {
-    left: 8px; /* Posisi ikon matahari */
-    color: #FFC107; /* Warna ikon matahari (emas) */
-}
-
-.night-icon {
-    right: 8px; /* Posisi ikon bulan */
-    color: #eee; /* Warna ikon bulan (putih) */
-    opacity: 0; /* Ikon bulan tersembunyi default */
-}
-
-.dark-theme .slider {
-    justify-content: flex-end; /* Slider di kanan (tema gelap) */
-}
-
-.dark-theme .day-icon {
-    opacity: 0; /* Sembunyikan ikon matahari saat tema gelap */
-}
-
-.dark-theme .night-icon {
-    opacity: 1; /* Tampilkan ikon bulan saat tema gelap */
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/* Media Query untuk layar yang lebih kecil */
-@media (max-width: 480px) {
-    .theme-toggle-container {
-        top: 10px;
-        right: 10px;
-        padding: 8px;
-    }
-
-    .theme-switch {
-        width: 60px;
-        height: 34px;
-    }
-
-    .slider:before {
-        height: 26px;
-        width: 26px;
-    }
-
-    .dark-theme .slider:before {
-        transform: translateX(26px);
-    }
-
-    .day-icon, .night-icon {
-        font-size: 1.1em;
-    }
+/* Menghilangkan gaya lama toggle switch (jika masih ada) */
+.theme-toggle-container, .theme-switch, .slider, .day-label, .night-label {
+    display: none !important; /* Pastikan elemen lama tidak terlihat */
 }
