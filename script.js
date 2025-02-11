@@ -141,23 +141,26 @@ themeToggle.addEventListener('click', () => {
 
 // Pagination Variables
 let currentPage = 1;
-const itemsPerPage = 30;
+const itemsPerPage = 32;
 
 function showPage(page) {
-    const productCards = document.querySelectorAll(".product-card"); // Pilih elemen .product-card
+    const productCards = document.querySelectorAll(".product-card");
     const totalItems = productCards.length;
-    const itemsPerPage = 30; // Pastikan ini tetap 30 atau sesuai keinginan Anda
+    const itemsPerPage = 32; // Sudah diubah menjadi 32
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    // Update visible items (sekarang untuk product cards)
+    console.log("Halaman:", page); // Tambahkan log halaman saat ini
+    console.log("Total Item:", totalItems); // Tambahkan log total item
+    console.log("Item per Halaman:", itemsPerPage); // Tambahkan log item per halaman
+    console.log("Total Halaman:", totalPages); // Tambahkan log total halaman
+
     productCards.forEach((card, index) => {
-        card.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
+        const shouldBeVisible = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage);
+        console.log(`Produk ke-${index + 1} (Halaman ${page}):`, shouldBeVisible ? "Tampil" : "Tersembunyi"); // Log status produk
+        card.classList.toggle('hidden', !shouldBeVisible);
     });
 
-    // Update page number display
-    document.getElementById("pageInfo").textContent = `Halaman ${page} dari ${totalPages}`; // Sesuaikan teks halaman
-
-    // Enable/Disable navigation buttons
+    document.getElementById("pageInfo").textContent = `Halaman ${page} dari ${totalPages}`;
     document.getElementById("prevPage").disabled = page === 1;
     document.getElementById("nextPage").disabled = page === totalPages;
 }
