@@ -325,10 +325,6 @@ footer.dark-theme {
     color: #eee; /* Warna ikon bulan tema gelap */
 }
 
-#theme-toggle.dark-theme::before {
-    content: '☾'; /* Ikon bulan Unicode yang lebih modern */
-}
-
 /* Menghilangkan gaya lama toggle switch (jika masih ada) */
 .theme-toggle-container, .theme-switch, .slider, .day-label, .night-label {
     display: none !important; /* Pastikan elemen lama tidak terlihat */
