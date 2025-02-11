@@ -3,10 +3,11 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    /* background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%); <-- Hapus atau komentari baris ini */
-    background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293986/steptodown.com409632_hqkpd8.jpg'); /* Tambahkan baris ini */
-    background-size: auto; /* Pastikan gambar menutupi seluruh body */
-    background-repeat: repeat; /* Agar gambar tidak berulang */
+    background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%); /* Revert to light gradient */
+    /* background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293986/steptodown.com409632_hqkpd8.jpg'); <-- Remove background-image */
+    background-size: cover; /* Keep cover, although less important for gradients */
+    /* background-repeat: repeat; <-- Remove background-repeat */
+    background-repeat: no-repeat; /* Keep no-repeat to prevent tiling of gradient if it somehow does */
     color: #4A5568;
     text-align: center;
     display: flex;
@@ -17,10 +18,11 @@ body {
 }
 
 body.dark-theme {
-    /* background: linear-gradient(135deg, #222 0%, #333 100%); <-- Hapus atau komentari baris ini */
-    background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293987/steptodown.com191672_v1nvzx.jpg); /* Tambahkan baris ini */
-    background-size: auto; /* Pastikan gambar menutupi seluruh body */
-    background-repeat: repeat; /* Agar gambar tidak berulang */
+    background: linear-gradient(135deg, #222 0%, #333 100%); /* Revert to dark gradient */
+    /* background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293987/steptodown.com191672_v1nvzx.jpg); <-- Remove background-image */
+    background-size: cover; /* Keep cover, although less important for gradients */
+    /* background-repeat: repeat; <-- Remove background-repeat */
+    background-repeat: no-repeat; /* Keep no-repeat to prevent tiling of gradient if it somehow does */
     color: #ddd;
 }
 
