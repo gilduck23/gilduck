@@ -295,20 +295,119 @@ footer.dark-theme {
     }
 }
 
-/* Style for the theme toggle button */
+/* ... semua CSS sebelumnya ... */
+
+/* Style for the theme toggle button yang dipercantik */
 #theme-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
+    padding: 10px; /* Padding lebih kecil */
+    background-color: transparent; /* Latar belakang transparan */
+    color: #4A5568; /* Warna ikon terang */
     border: none;
-    border-radius: 5px;
+    border-radius: 50%; /* Bentuk lingkaran */
     cursor: pointer;
-    z-index: 100; /* Ensure it's above other elements */
+    font-size: 20px; /* Ukuran ikon */
+    line-height: 1;
+    z-index: 100;
+    transition: color 0.3s ease; /* Transisi warna */
+    box-shadow: 0 0 0 rgba(0,0,0,0); /* Hilangkan shadow default */
 }
+
+#theme-toggle:hover {
+    color: #8AAAE5; /* Warna ikon saat hover */
+}
+
+#theme-toggle::before {
+    content: '☀️'; /* Ikon matahari untuk tema terang */
+    display: block;
+}
+
 #theme-toggle.dark-theme {
-    background-color: #555;
-    color: #fff;
+    color: #ddd; /* Warna ikon gelap */
+}
+
+#theme-toggle.dark-theme:hover {
+    color: #AAA; /* Warna ikon saat hover tema gelap */
+}
+
+#theme-toggle.dark-theme::before {
+    content: '🌙'; /* Ikon bulan untuk tema gelap */
+}
+
+
+/* Perbaikan Tampilan Tema Gelap */
+body.dark-theme {
+    background: linear-gradient(135deg, #282828 0%, #383838 100%); /* Latar belakang gelap yang lebih halus */
+    color: #eee; /* Teks tema gelap yang lebih terang */
+}
+
+h1.dark-theme {
+    background: linear-gradient(90deg, #777 0%, #888 100%); /* H1 tema gelap yang lebih kalem */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid rgba(150, 150, 150, 0.3); /* Border lebih lembut */
+    color: #eee;
+    box-shadow: 0 8px 20px rgba(150, 150, 150, 0.2); /* Shadow lebih lembut */
+}
+
+.search-container input[type="text"].dark-theme {
+    background: rgba(60, 60, 60, 0.9); /* Input search lebih gelap */
+    border: 2px solid #777; /* Border input lebih lembut */
+    color: #eee;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); /* Tambahkan inner shadow */
+}
+
+.filter-buttons button.dark-theme {
+    border: 2px solid #777; /* Border tombol filter lebih lembut */
+    background: rgba(150, 150, 150, 0.1); /* Latar belakang tombol lebih gelap */
+    color: #ddd;
+}
+
+.filter-buttons button:hover.dark-theme {
+    background: #777; /* Hover tombol filter lebih gelap */
+    color: #222;
+    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.3); /* Shadow hover lebih lembut */
+}
+
+table.dark-theme {
+    background: rgba(60, 60, 60, 0.9); /* Table lebih gelap */
+    border: 1px solid rgba(150, 150, 150, 0.2); /* Border table lebih lembut */
+    color: #eee;
+    box-shadow: 0 10px 30px rgba(150, 150, 150, 0.1); /* Shadow table lebih lembut */
+}
+
+th.dark-theme {
+    background: #555; /* TH lebih gelap */
+    color: #eee;
+}
+
+td:hover.dark-theme {
+    background: #666; /* TD hover lebih gelap */
+    color: #eee;
+}
+
+td img.dark-theme {
+    border: 2px solid rgba(150, 150, 150, 0.2); /* Border gambar lebih lembut */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Tambahkan shadow pada gambar */
+}
+
+td img:hover.dark-theme {
+    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2); /* Shadow hover gambar lebih lembut */
+}
+
+footer.dark-theme {
+    color: #ddd; /* Footer tema gelap lebih terang */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow lebih terlihat */
+}
+
+.modal-content.dark-theme {
+    background: #444; /* Modal content lebih gelap */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow modal lebih kuat */
+}
+
+.modal-image.dark-theme {
+    border-radius: 10px; /* Tambahkan border radius pada gambar modal */
+    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.3); /* Tambahkan shadow pada gambar modal */
 }
