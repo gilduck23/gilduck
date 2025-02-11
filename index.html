@@ -12,7 +12,17 @@
 
     <h1>Daftar Produk</h1>
 
-    <button id="theme-toggle">Ubah Tema</button> <!-- Tombol tema -->
+    <div class="theme-toggle-container">
+    <label class="theme-switch" for="theme-checkbox">
+        <input type="checkbox" id="theme-checkbox">
+        <div class="slider round">
+            <span class="day-icon">☀️</span>
+            <span class="night-icon">🌙</span>
+        </div>
+    </label>
+    <span class="theme-label day-label">DAYMODE</span>
+    <span class="theme-label night-label">NIGHTMODE</span>
+</div>
 
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="searchProducts()">
