@@ -564,23 +564,20 @@
     const rows = document.querySelectorAll("#productTable tbody tr");
 
     rows.forEach(row => {
-      const productName = row.cells[0].textContent.toLowerCase();
-      const productContent = row.cells[2].textContent.toLowerCase();
-      const matchSearch = productName.includes(currentSearch) || productContent.includes(currentSearch);
+        const productName = row.cells[0].textContent.toLowerCase();
+        const productContent = row.cells[2].textContent.toLowerCase();
+        const matchSearch = productName.includes(currentSearch) || productContent.includes(currentSearch);
+        const matchFilter = currentFilter === '' || row.classList.contains(currentFilter);
 
-      let matchFilter = true; // Default to true if no filter is selected
-
-      if (currentFilter !== '') {
-        matchFilter = row.classList.contains(currentFilter);
-      }
-
-      if (matchFilter && (currentSearch === '' || matchSearch)) {
-        row.classList.remove('hidden');
-      } else {
-        row.classList.add('hidden');
-      }
+        if (currentSearch !== '') {
+            // Show rows that match the search, ignoring the filter
+            row.classList.toggle('hidden', !matchSearch);
+        } else {
+            // Show rows that match the filter when there's no search
+            row.classList.toggle('hidden', !matchFilter);
+        }
     });
-  }
+}
 
   // Modal functions
   function openModal(src, alt) {
