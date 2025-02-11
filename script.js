@@ -153,6 +153,9 @@ function showPage(page) {
         row.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
     });
 
+    // Update page number display
+    document.getElementById("pageInfo").textContent = `Page ${page} of ${totalPages}`;
+
     // Enable/Disable navigation buttons
     document.getElementById("prevPage").disabled = page === 1;
     document.getElementById("nextPage").disabled = page === totalPages;
@@ -180,4 +183,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showPage(currentPage);
 });
-
