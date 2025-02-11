@@ -1,14 +1,10 @@
 /* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito Sans', sans-serif; /* Font yang lebih modern */
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%); /* Revert to light gradient */
-    /* background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293986/steptodown.com409632_hqkpd8.jpg'); <-- Remove background-image */
-    background-size: cover; /* Keep cover, although less important for gradients */
-    /* background-repeat: repeat; <-- Remove background-repeat */
-    background-repeat: no-repeat; /* Keep no-repeat to prevent tiling of gradient if it somehow does */
-    color: #4A5568;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e1e5ea 100%); /* Skema warna abu-abu lembut */
+    color: #333; /* Warna teks lebih gelap */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -18,35 +14,31 @@ body {
 }
 
 body.dark-theme {
-    background: linear-gradient(135deg, #222 0%, #333 100%); /* Revert to dark gradient */
-    /* background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739293987/steptodown.com191672_v1nvzx.jpg); <-- Remove background-image */
-    background-size: cover; /* Keep cover, although less important for gradients */
-    /* background-repeat: repeat; <-- Remove background-repeat */
-    background-repeat: no-repeat; /* Keep no-repeat to prevent tiling of gradient if it somehow does */
-    color: #ddd;
+    background: linear-gradient(135deg, #333 0%, #222 100%); /* Skema warna gelap */
+    color: #eee;
 }
 
 h1 {
-    font-size: 3rem;
-    margin: 30px 0;
-    background: linear-gradient(90deg, #8AAAE5 0%, #6B8DD6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 15px 30px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(138, 170, 229, 0.2);
-    border: 2px solid rgba(138, 170, 229, 0.3);
-    transition: background 0.3s, border 0.3s, color 0.3s;
+    font-size: 2.5rem; /* Ukuran judul sedikit dikecilkan */
+    margin: 20px 0 30px; /* Margin judul */
+    color: #4c6ef5; /* Warna judul lebih menonjol */
+    padding: 10px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(76, 110, 245, 0.2);
+    border: 1px solid rgba(76, 110, 245, 0.3);
+    transition: all 0.3s ease; /* Transisi untuk semua properti */
+    font-weight: 700; /* Judul lebih tebal */
+    text-transform: uppercase; /* Judul huruf besar */
+    letter-spacing: 1px; /* Spasi antar huruf judul */
+    background: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan untuk judul */
 }
 
 h1.dark-theme {
-    background: linear-gradient(90deg, #AAA 0%, #BBB 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    border: 2px solid rgba(200, 200, 200, 0.3);
-    color: #eee;
-    box-shadow: 0 8px 20px rgba(200, 200, 200, 0.2);
+    color: #a5d8de; /* Warna judul tema gelap */
+    border: 1px solid rgba(165, 216, 222, 0.3);
+    box-shadow: 0 4px 10px rgba(165, 216, 222, 0.2);
+    background: rgba(50, 50, 50, 0.8); /* Latar belakang gelap untuk judul tema gelap */
 }
 
 /* Search Input */
@@ -55,162 +47,177 @@ h1.dark-theme {
 }
 
 .search-container input[type="text"] {
-    padding: 12px 25px;
-    border: 2px solid #8AAAE5;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #ced4da; /* Border input lebih halus */
+    border-radius: 25px;
     width: 300px;
     max-width: 80%;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
-    color: #4A5568;
+    color: #495057;
+    font-size: 0.9rem; /* Ukuran font input lebih kecil */
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #4c6ef5; /* Warna border fokus input */
+    box-shadow: 0 0 0 0.2rem rgba(76, 110, 245, 0.25); /* Efek fokus input */
+    outline: 0;
 }
 
 .search-container input[type="text"].dark-theme {
     background: rgba(50, 50, 50, 0.9);
-    border: 2px solid #AAA;
+    border: 1px solid #6c757d; /* Border input tema gelap */
     color: #ddd;
 }
+
+.search-container input[type="text"].dark-theme:focus {
+    border-color: #a5d8de; /* Warna border fokus input tema gelap */
+    box-shadow: 0 0 0 0.2rem rgba(165, 216, 222, 0.25); /* Efek fokus input tema gelap */
+}
+
 
 /* Filter Buttons */
 .filter-buttons {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 10px; /* Gap filter buttons lebih kecil */
 }
 
 .filter-buttons button {
-    padding: 12px 25px;
-    border: 2px solid #8AAAE5;
-    background: rgba(138, 170, 229, 0.1);
-    color: #4A5568;
+    padding: 8px 18px; /* Padding tombol filter lebih kecil */
+    border: 1px solid #4c6ef5; /* Border tombol filter */
+    background-color: #fff; /* Warna latar belakang tombol filter putih */
+    color: #4c6ef5; /* Warna teks tombol filter */
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 25px;
     transition: all 0.3s ease;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.9rem; /* Ukuran font tombol filter lebih kecil */
+    font-weight: 600;
     backdrop-filter: blur(5px);
-        }
-
-.filter-buttons button:hover {
-    background: #8AAAE5;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(138, 170, 229, 0.3);
+    box-shadow: 0 2px 5px rgba(76, 110, 245, 0.1); /* Box shadow tombol filter */
 }
 
+.filter-buttons button:hover {
+    background-color: #4c6ef5; /* Warna latar belakang tombol filter saat hover */
+    color: white;
+    transform: translateY(-2px); /* Efek hover tombol filter */
+    box-shadow: 0 4px 10px rgba(76, 110, 245, 0.3); /* Box shadow hover tombol filter */
+}
+
+.filter-buttons button:focus {
+    outline: none; /* Hilangkan outline fokus tombol filter */
+    box-shadow: 0 0 0 0.2rem rgba(76, 110, 245, 0.25); /* Efek fokus tombol filter */
+}
+
+
 .filter-buttons button.dark-theme {
-    border: 2px solid #AAA;
-    background: rgba(200, 200, 200, 0.1);
-    color: #ddd;
+    border: 1px solid #a5d8de; /* Border tombol filter tema gelap */
+    background-color: #343a40; /* Warna latar belakang tombol filter tema gelap */
+    color: #a5d8de; /* Warna teks tombol filter tema gelap */
+    box-shadow: 0 2px 5px rgba(165, 216, 222, 0.1); /* Box shadow tombol filter tema gelap */
 }
 
 .filter-buttons button:hover.dark-theme {
-    background: #AAA;
-    color: #222;
-    box-shadow: 0 5px 15px rgba(200, 200, 200, 0.3);
+    background-color: #a5d8de; /* Warna latar belakang hover tombol filter tema gelap */
+    color: #343a40;
+    box-shadow: 0 4px 10px rgba(165, 216, 222, 0.3); /* Box shadow hover tombol filter tema gelap */
 }
 
-/* Table Styles */
-table {
+.filter-buttons button:focus.dark-theme {
+    box-shadow: 0 0 0 0.2rem rgba(165, 216, 222, 0.25); /* Efek fokus tombol filter tema gelap */
+}
+
+
+/* Product Grid Styles */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsif dengan lebar min 250px */
+    gap: 20px; /* Gap antar card produk */
     width: 90%;
-    border-collapse: collapse;
-    margin: 30px auto;
-    background: rgba(255, 255, 255, 0.9);
+    max-width: 1200px; /* Lebar maksimum grid produk */
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Latar belakang grid produk semi-transparan */
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(138, 170, 229, 0.1);
-    border: 1px solid rgba(138, 170, 229, 0.2);
-    transition: background 0.3s, border 0.3s, color 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Box shadow grid produk */
+    transition: background 0.3s, box-shadow 0.3s; /* Transisi untuk grid produk */
 }
 
-table.dark-theme {
-    background: rgba(50, 50, 50, 0.9);
-    border: 1px solid rgba(200, 200, 200, 0.2);
-    color: #ddd;
+.product-grid.dark-theme {
+    background: rgba(50, 50, 50, 0.9); /* Latar belakang grid produk tema gelap */
+    box-shadow: 0 5px 15px rgba(200, 200, 200, 0.1); /* Box shadow grid produk tema gelap */
 }
 
-th,
-td {
-    padding: 18px;
-    text-align: left;
-    font-size: 1rem;
-    border-bottom: 1px solid rgba(138, 170, 229, 0.1);
-    transition: background 0.3s, border 0.3s, color 0.3s;
-}
 
-th.dark-theme,
-td.dark-theme {
-    border-bottom: 1px solid rgba(200, 200, 200, 0.1);
-}
-
-th {
-    background: #F8FAFF;
-    color: #4A5568;
-    font-weight: 600;
-}
-
-th.dark-theme {
-    background: #444;
-    color: #eee;
-}
-
-td {
-    color: #4A5568;
-}
-
-td.dark-theme {
-    color: #ddd;
-}
-
-tr:hover {
-    background: rgba(138, 170, 229, 0.05);
-}
-
-tr:hover.dark-theme {
-    background: rgba(200, 200, 200, 0.05);
-}
-
-/* Image Column */
-td img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.product-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
     border-radius: 10px;
-    border: 2px solid rgba(138, 170, 229, 0.2);
+    background-color: #fff; /* Warna latar belakang card produk putih */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Box shadow card produk */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk card produk */
+    cursor: pointer; /* Cursor pointer untuk card produk */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Efek hover card produk */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Box shadow hover card produk */
+}
+
+.product-card.dark-theme {
+    background-color: #444; /* Warna latar belakang card produk tema gelap */
+    box-shadow: 0 2px 8px rgba(200, 200, 200, 0.08); /* Box shadow card produk tema gelap */
+}
+
+.product-card:hover.dark-theme {
+    box-shadow: 0 8px 20px rgba(200, 200, 200, 0.15); /* Box shadow hover card produk tema gelap */
+}
+
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
     transition: all 0.3s ease;
+    object-fit: cover;
+    aspect-ratio: 1/1; /* Rasio aspek gambar 1:1 */
 }
 
-td img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(138, 170, 229, 0.2);
+.product-card img:hover {
+    transform: scale(1.02); /* Efek hover gambar produk */
 }
 
-td img.dark-theme {
-    border: 2px solid rgba(200, 200, 200, 0.2);
+
+.product-card h3 {
+    font-size: 1.1rem; /* Ukuran judul produk */
+    margin: 0 0 5px 0;
+    color: #343a40; /* Warna judul produk */
+    font-weight: 700; /* Judul produk lebih tebal */
+    transition: color 0.3s;
 }
 
-td img:hover.dark-theme {
-    box-shadow: 0 5px 15px rgba(200, 200, 200, 0.2);
+.product-card.dark-theme h3 {
+    color: #f8f9fa; /* Warna judul produk tema gelap */
 }
 
-/* Hover Animation */
-td {
-    transition: all 0.3s ease;
+
+.product-card p {
+    font-size: 0.9rem; /* Ukuran teks deskripsi produk */
+    margin: 0;
+    color: #6c757d; /* Warna teks deskripsi produk */
+    transition: color 0.3s;
 }
 
-td:hover {
-    transform: translateX(10px);
-    background: #f8f8f8;
+.product-card.dark-theme p {
+    color: #adb5bd; /* Warna teks deskripsi produk tema gelap */
 }
 
-td:hover.dark-theme {
-    background: #555;
-    color: #eee;
-}
 
 /* Hidden Class */
 .hidden {
@@ -219,19 +226,19 @@ td:hover.dark-theme {
 
 /* Footer */
 footer {
-    margin-top: auto; /* Stick the footer to the bottom */
-    margin: 30px 0;
-    font-size: 0.9rem;
-    color: #4A5568;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: background 0.3s, color 0.3s;
+    margin-top: auto;
+    margin: 20px 0;
+    font-size: 0.85rem; /* Ukuran font footer lebih kecil */
+    color: #6c757d; /* Warna teks footer */
+    text-shadow: none; /* Hilangkan text-shadow footer */
+    transition: color 0.3s;
 }
 
 footer.dark-theme {
-    color: #ddd;
+    color: #adb5bd; /* Warna teks footer tema gelap */
 }
 
-/* Modal Styles */
+/* Modal Styles (tetap sama) */
 .modal {
     display: none;
     position: fixed;
@@ -275,90 +282,107 @@ footer.dark-theme {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    table {
-        width: 100%; /* Full width on smaller screens */
-        margin: 15px auto;
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Grid lebih rapat di layar kecil */
+        gap: 15px; /* Gap grid lebih kecil di layar kecil */
+        padding: 10px; /* Padding grid lebih kecil di layar kecil */
+        width: 95%; /* Lebar grid lebih lebar di layar kecil */
     }
 
-    th,
-    td {
-        padding: 12px;
-        font-size: 0.9rem;
+    .product-card {
+        padding: 10px; /* Padding card produk lebih kecil di layar kecil */
     }
 
-    td img {
-        width: 80px;
-        height: 80px;
+    .product-card h3 {
+        font-size: 1rem; /* Ukuran judul produk lebih kecil di layar kecil */
+    }
+
+    .product-card p {
+        font-size: 0.8rem; /* Ukuran teks deskripsi produk lebih kecil di layar kecil */
     }
 
     .filter-buttons {
-        gap: 10px;
+        gap: 8px; /* Gap tombol filter lebih kecil di layar kecil */
+        margin-bottom: 15px; /* Margin bottom tombol filter lebih kecil di layar kecil */
     }
 
     .filter-buttons button {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-        width: auto;
-        min-width: 80px;
+        padding: 6px 12px; /* Padding tombol filter lebih kecil di layar kecil */
+        font-size: 0.8rem; /* Ukuran font tombol filter lebih kecil di layar kecil */
+    }
+
+    h1 {
+        font-size: 2rem; /* Ukuran judul lebih kecil di layar kecil */
+        margin: 15px 0 20px; /* Margin judul lebih kecil di layar kecil */
+    }
+
+    .search-container {
+        margin: 15px 0; /* Margin search container lebih kecil di layar kecil */
+    }
+
+    .search-container input[type="text"] {
+        padding: 8px 15px; /* Padding input search lebih kecil di layar kecil */
+        font-size: 0.8rem; /* Ukuran font input search lebih kecil di layar kecil */
+    }
+
+    footer {
+        margin: 15px 0; /* Margin footer lebih kecil di layar kecil */
+        font-size: 0.75rem; /* Ukuran font footer lebih kecil di layar kecil */
     }
 }
 
-/* ... semua CSS sebelumnya ... */
-/* Style for the theme toggle button yang dipercantik (lingkaran animasi) */
+/* Theme Toggle Button (tetap sama) */
 #theme-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 40px; /* Ukuran tombol lingkaran */
+    width: 40px;
     height: 40px;
-    border-radius: 50%; /* Membuat tombol lingkaran */
-    background-color: #E6F0FF; /* Warna latar belakang tema terang */
-    color: #FFC107; /* Warna ikon matahari tema terang */
+    border-radius: 50%;
+    background-color: #fff; /* Warna latar belakang tombol tema terang */
+    color: #ffc107;
     border: none;
     cursor: pointer;
-    font-size: 1.5em; /* Ukuran ikon */
+    font-size: 1.5em;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease; /* Animasi transisi */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Tambahkan sedikit shadow */
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1); /* Efek hover sedikit membesar */
+    transform: scale(1.1);
 }
 
 #theme-toggle.dark-theme {
-    background-color: #333; /* Warna latar belakang tema gelap */
-    color: #eee; /* Warna ikon bulan tema gelap */
+    background-color: #333; /* Warna latar belakang tombol tema gelap */
+    color: #eee;
 }
-/* ... semua CSS sebelumnya ... */
 
-/* Hilangkan efek fokus default pada tombol tema */
 #theme-toggle:focus {
-    outline: none; /* Menghilangkan garis luar fokus default */
-    box-shadow: none; /* Menghilangkan bayangan kotak fokus default */
-}
-/* Menghilangkan gaya lama toggle switch (jika masih ada) */
-.theme-toggle-container, .theme-switch, .slider, .day-label, .night-label {
-    display: none !important; /* Pastikan elemen lama tidak terlihat */
+    outline: none;
+    box-shadow: none;
 }
 
-/* test code */
-
+/* Pagination Buttons (tetap sama) */
 #prevPage, #nextPage {
     padding: 10px 15px;
     font-size: 1rem;
     border: none;
-    background: #8AAAE5;
+    background: #4c6ef5; /* Warna tombol pagination */
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 25px;
     transition: background 0.3s;
 }
+
+#prevPage:hover, #nextPage:hover {
+    background: #3b5bdb; /* Warna hover tombol pagination */
+}
+
 
 #prevPage:disabled, #nextPage:disabled {
     background: #ccc;
     cursor: not-allowed;
 }
-
