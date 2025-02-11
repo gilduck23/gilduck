@@ -297,117 +297,138 @@ footer.dark-theme {
 
 /* ... semua CSS sebelumnya ... */
 
-/* Style for the theme toggle button yang dipercantik */
-#theme-toggle {
-    position: fixed;
+/* Style for the theme toggle switch yang dipercantik seperti gambar */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed; /* Tetap di posisi */
     top: 20px;
     right: 20px;
-    padding: 10px; /* Padding lebih kecil */
-    background-color: transparent; /* Latar belakang transparan */
-    color: #4A5568; /* Warna ikon terang */
-    border: none;
-    border-radius: 50%; /* Bentuk lingkaran */
-    cursor: pointer;
-    font-size: 20px; /* Ukuran ikon */
-    line-height: 1;
     z-index: 100;
-    transition: color 0.3s ease; /* Transisi warna */
-    box-shadow: 0 0 0 rgba(0,0,0,0); /* Hilangkan shadow default */
 }
 
-#theme-toggle:hover {
-    color: #8AAAE5; /* Warna ikon saat hover */
+.theme-label {
+    font-size: 0.9em;
+    color: #4A5568;
+    transition: color 0.3s ease;
 }
 
-#theme-toggle::before {
-    content: '☀️'; /* Ikon matahari untuk tema terang */
-    display: block;
-}
-
-#theme-toggle.dark-theme {
-    color: #ddd; /* Warna ikon gelap */
-}
-
-#theme-toggle.dark-theme:hover {
-    color: #AAA; /* Warna ikon saat hover tema gelap */
-}
-
-#theme-toggle.dark-theme::before {
-    content: '🌙'; /* Ikon bulan untuk tema gelap */
-}
-
-
-/* Perbaikan Tampilan Tema Gelap */
-body.dark-theme {
-    background: linear-gradient(135deg, #282828 0%, #383838 100%); /* Latar belakang gelap yang lebih halus */
-    color: #eee; /* Teks tema gelap yang lebih terang */
-}
-
-h1.dark-theme {
-    background: linear-gradient(90deg, #777 0%, #888 100%); /* H1 tema gelap yang lebih kalem */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    border: 2px solid rgba(150, 150, 150, 0.3); /* Border lebih lembut */
-    color: #eee;
-    box-shadow: 0 8px 20px rgba(150, 150, 150, 0.2); /* Shadow lebih lembut */
-}
-
-.search-container input[type="text"].dark-theme {
-    background: rgba(60, 60, 60, 0.9); /* Input search lebih gelap */
-    border: 2px solid #777; /* Border input lebih lembut */
-    color: #eee;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); /* Tambahkan inner shadow */
-}
-
-.filter-buttons button.dark-theme {
-    border: 2px solid #777; /* Border tombol filter lebih lembut */
-    background: rgba(150, 150, 150, 0.1); /* Latar belakang tombol lebih gelap */
+.theme-label.dark-theme {
     color: #ddd;
 }
 
-.filter-buttons button:hover.dark-theme {
-    background: #777; /* Hover tombol filter lebih gelap */
-    color: #222;
-    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.3); /* Shadow hover lebih lembut */
+.day-label {
+    display: inline; /* Tampilkan DAYMODE label saat tema terang */
 }
 
-table.dark-theme {
-    background: rgba(60, 60, 60, 0.9); /* Table lebih gelap */
-    border: 1px solid rgba(150, 150, 150, 0.2); /* Border table lebih lembut */
-    color: #eee;
-    box-shadow: 0 10px 30px rgba(150, 150, 150, 0.1); /* Shadow table lebih lembut */
+.night-label {
+    display: none; /* Sembunyikan NIGHTMODE label default */
 }
 
-th.dark-theme {
-    background: #555; /* TH lebih gelap */
-    color: #eee;
+.dark-theme .day-label {
+    display: none; /* Sembunyikan DAYMODE label saat tema gelap */
 }
 
-td:hover.dark-theme {
-    background: #666; /* TD hover lebih gelap */
-    color: #eee;
+.dark-theme .night-label {
+    display: inline; /* Tampilkan NIGHTMODE label saat tema gelap */
 }
 
-td img.dark-theme {
-    border: 2px solid rgba(150, 150, 150, 0.2); /* Border gambar lebih lembut */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Tambahkan shadow pada gambar */
+
+/* The switch - the box around the slider */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
-td img:hover.dark-theme {
-    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2); /* Shadow hover gambar lebih lembut */
+/* Hide default HTML checkbox */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-footer.dark-theme {
-    color: #ddd; /* Footer tema gelap lebih terang */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow lebih terlihat */
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E6F0FF; /* Warna latar belakang switch tema terang */
+    transition: .4s;
+    border-radius: 34px; /* Membuat ujung membulat */
+    border: 2px solid #8AAAE5; /* Border switch tema terang */
+    display: flex;
+    align-items: center;
+    padding: 4px; /* Ruang di dalam slider */
+    justify-content: flex-start; /* Slider awal di kiri (tema terang) */
 }
 
-.modal-content.dark-theme {
-    background: #444; /* Modal content lebih gelap */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow modal lebih kuat */
+.slider.dark-theme {
+    background-color: #333; /* Warna latar belakang switch tema gelap */
+    border: 2px solid #777; /* Border switch tema gelap */
 }
 
-.modal-image.dark-theme {
-    border-radius: 10px; /* Tambahkan border radius pada gambar modal */
-    box-shadow: 0 5px 15px rgba(150, 150, 150, 0.3); /* Tambahkan shadow pada gambar modal */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px; /* Posisi awal slider (tema terang) */
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Membuat slider bulat */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow pada slider */
+}
+
+.dark-theme .slider:before {
+    transform: translateX(26px); /* Geser slider ke kanan (tema gelap) */
+}
+
+
+/* Icons inside the slider */
+.day-icon, .night-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.day-icon {
+    left: 8px; /* Posisi ikon matahari */
+    color: #FFC107; /* Warna ikon matahari (emas) */
+}
+
+.night-icon {
+    right: 8px; /* Posisi ikon bulan */
+    color: #eee; /* Warna ikon bulan (putih) */
+    opacity: 0; /* Ikon bulan tersembunyi default */
+}
+
+.dark-theme .slider {
+    justify-content: flex-end; /* Slider di kanan (tema gelap) */
+}
+
+.dark-theme .day-icon {
+    opacity: 0; /* Sembunyikan ikon matahari saat tema gelap */
+}
+
+.dark-theme .night-icon {
+    opacity: 1; /* Tampilkan ikon bulan saat tema gelap */
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
