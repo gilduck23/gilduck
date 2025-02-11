@@ -324,7 +324,13 @@ footer.dark-theme {
     background-color: #333; /* Warna latar belakang tema gelap */
     color: #eee; /* Warna ikon bulan tema gelap */
 }
+/* ... semua CSS sebelumnya ... */
 
+/* Hilangkan efek fokus default pada tombol tema */
+#theme-toggle:focus {
+    outline: none; /* Menghilangkan garis luar fokus default */
+    box-shadow: none; /* Menghilangkan bayangan kotak fokus default */
+}
 /* Menghilangkan gaya lama toggle switch (jika masih ada) */
 .theme-toggle-container, .theme-switch, .slider, .day-label, .night-label {
     display: none !important; /* Pastikan elemen lama tidak terlihat */
