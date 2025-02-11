@@ -46,7 +46,7 @@
   }
 
   // Theme Toggle
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeCheckbox = document.getElementById('theme-checkbox');
   const body = document.body;
   const h1 = document.querySelector('h1');
   const searchInput = document.querySelector('.search-container input[type="text"]');
@@ -56,6 +56,8 @@
   const tds = document.querySelectorAll('td');
   const footer = document.querySelector('footer');
   const modalContent = document.querySelector('.modal-content');
+  const slider = document.querySelector('.slider'); // Ambil elemen slider
+  const themeLabels = document.querySelectorAll('.theme-label'); // Ambil label tema
 
   // Check saved theme
   const savedTheme = localStorage.getItem('theme');
@@ -69,11 +71,16 @@
       tds.forEach(td => td.classList.add(savedTheme));
       footer.classList.add(savedTheme);
       modalContent.classList.add(savedTheme);
-      themeToggle.classList.add(savedTheme);
+      slider.classList.add(savedTheme); // Tambahkan kelas tema ke slider
+      themeLabels.forEach(label => label.classList.add(savedTheme)); // Tambahkan kelas tema ke label
+
+      if (savedTheme === 'dark-theme') {
+          themeCheckbox.checked = true; // Set checkbox checked jika tema gelap
+      }
   }
 
   // Toggle theme
-  themeToggle.addEventListener('click', () => {
+  themeCheckbox.addEventListener('change', () => { // Gunakan event 'change' pada checkbox
       body.classList.toggle('dark-theme');
       h1.classList.toggle('dark-theme');
       searchInput.classList.toggle('dark-theme');
@@ -83,7 +90,8 @@
       tds.forEach(td => td.classList.toggle('dark-theme'));
       footer.classList.toggle('dark-theme');
       modalContent.classList.toggle('dark-theme');
-      themeToggle.classList.toggle('dark-theme');
+      slider.classList.toggle('dark-theme'); // Toggle kelas tema pada slider
+      themeLabels.forEach(label => label.classList.toggle('dark-theme')); // Toggle kelas tema pada label
 
       // Save or remove theme
       if (body.classList.contains('dark-theme')) {
