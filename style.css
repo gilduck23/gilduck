@@ -3,7 +3,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%);
+    /* background: linear-gradient(135deg, #E6F0FF 0%, #B8C7FF 100%); <-- Hapus atau komentari baris ini */
+    background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739290277/9899859_4293357_ibwui0.jpg'); /* Tambahkan baris ini */
+    background-size: cover; /* Pastikan gambar menutupi seluruh body */
+    background-repeat: no-repeat; /* Agar gambar tidak berulang */
     color: #4A5568;
     text-align: center;
     display: flex;
@@ -14,7 +17,10 @@ body {
 }
 
 body.dark-theme {
-    background: linear-gradient(135deg, #222 0%, #333 100%);
+    /* background: linear-gradient(135deg, #222 0%, #333 100%); <-- Hapus atau komentari baris ini */
+    background-image: url('https://res.cloudinary.com/dwext19lv/image/upload/v1739290275/freepicdownloader.com_-tranquil-night-lake-large_ycfyzp.jpg'); /* Tambahkan baris ini */
+    background-size: cover; /* Pastikan gambar menutupi seluruh body */
+    background-repeat: no-repeat; /* Agar gambar tidak berulang */
     color: #ddd;
 }
 
