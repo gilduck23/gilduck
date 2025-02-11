@@ -45,61 +45,71 @@
     modal.style.display = 'none';
   }
 
-  // Theme Toggle
-  const themeCheckbox = document.getElementById('theme-checkbox');
-  const body = document.body;
-  const h1 = document.querySelector('h1');
-  const searchInput = document.querySelector('.search-container input[type="text"]');
-  const filterButtons = document.querySelectorAll('.filter-buttons button');
-  const table = document.getElementById('productTable');
-  const ths = document.querySelectorAll('th');
-  const tds = document.querySelectorAll('td');
-  const footer = document.querySelector('footer');
-  const modalContent = document.querySelector('.modal-content');
-  const slider = document.querySelector('.slider'); // Ambil elemen slider
-  const themeLabels = document.querySelectorAll('.theme-label'); // Ambil label tema
+ // Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const h1 = document.querySelector('h1');
+const searchInput = document.querySelector('.search-container input[type="text"]');
+const filterButtons = document.querySelectorAll('.filter-buttons button');
+const table = document.getElementById('productTable');
+const ths = document.querySelectorAll('th');
+const tds = document.querySelectorAll('td');
+const footer = document.querySelector('footer');
+const modalContent = document.querySelector('.modal-content');
 
-  // Check saved theme
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-      body.classList.add(savedTheme);
-      h1.classList.add(savedTheme);
-      searchInput.classList.add(savedTheme);
-      filterButtons.forEach(button => button.classList.add(savedTheme));
-      table.classList.add(savedTheme);
-      ths.forEach(th => th.classList.add(savedTheme));
-      tds.forEach(td => td.classList.add(savedTheme));
-      footer.classList.add(savedTheme);
-      modalContent.classList.add(savedTheme);
-      slider.classList.add(savedTheme); // Tambahkan kelas tema ke slider
-      themeLabels.forEach(label => label.classList.add(savedTheme)); // Tambahkan kelas tema ke label
+// Check saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+    h1.classList.add(savedTheme);
+    searchInput.classList.add(savedTheme);
+    filterButtons.forEach(button => button.classList.add(savedTheme));
+    table.classList.add(savedTheme);
+    ths.forEach(th => th.classList.add(savedTheme));
+    tds.forEach(td => td.classList.add(savedTheme));
+    footer.classList.add(savedTheme);
+    modalContent.classList.add(savedTheme);
+    themeToggle.classList.add(savedTheme);
 
-      if (savedTheme === 'dark-theme') {
-          themeCheckbox.checked = true; // Set checkbox checked jika tema gelap
-      }
-  }
+    if (savedTheme === 'dark-theme') {
+        themeToggle.textContent = '🌙'; // Set ikon bulan jika tema gelap
+    } else {
+        themeToggle.textContent = '☀️'; // Set ikon matahari jika tema terang (default)
+    }
+} else {
+    themeToggle.textContent = '☀️'; // Set ikon matahari sebagai default
+}
 
-  // Toggle theme
-  themeCheckbox.addEventListener('change', () => { // Gunakan event 'change' pada checkbox
-      body.classList.toggle('dark-theme');
-      h1.classList.toggle('dark-theme');
-      searchInput.classList.toggle('dark-theme');
-      filterButtons.forEach(button => button.classList.toggle('dark-theme'));
-      table.classList.toggle('dark-theme');
-      ths.forEach(th => th.classList.toggle('dark-theme'));
-      tds.forEach(td => td.classList.toggle('dark-theme'));
-      footer.classList.toggle('dark-theme');
-      modalContent.classList.toggle('dark-theme');
-      slider.classList.toggle('dark-theme'); // Toggle kelas tema pada slider
-      themeLabels.forEach(label => label.classList.toggle('dark-theme')); // Toggle kelas tema pada label
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    h1.classList.toggle('dark-theme');
+    searchInput.classList.toggle('dark-theme');
+    filterButtons.forEach(button => button.classList.toggle('dark-theme'));
+    table.classList.toggle('dark-theme');
+    ths.forEach(th => th.classList.toggle('dark-theme'));
+    tds.forEach(td => td.classList.toggle('dark-theme'));
+    footer.classList.toggle('dark-theme');
+    modalContent.classList.toggle('dark-theme');
+    themeToggle.classList.toggle('dark-theme');
 
-      // Save or remove theme
-      if (body.classList.contains('dark-theme')) {
-          localStorage.setItem('theme', 'dark-theme');
-      } else {
-          localStorage.removeItem('theme');
-      }
-  });
+    // Change theme toggle icon and aria-label
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.textContent = '🌙';
+        themeToggle.setAttribute('aria-label', 'Aktifkan Tema Terang'); // Update aria-label
+    } else {
+        themeToggle.textContent = '☀️';
+        themeToggle.setAttribute('aria-label', 'Aktifkan Tema Gelap'); // Update aria-label
+    }
+
+
+    // Save or remove theme
+    if (body.classList.contains('dark-theme')) {
+        localStorage.setItem('theme', 'dark-theme');
+    } else {
+        localStorage.removeItem('theme');
+    }
+});
 
 
   // More robust DOMContentLoaded handling and event listener attachment
