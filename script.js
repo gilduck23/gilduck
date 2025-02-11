@@ -144,17 +144,18 @@ let currentPage = 1;
 const itemsPerPage = 30;
 
 function showPage(page) {
-    const rows = document.querySelectorAll("#productTable tbody tr");
-    const totalItems = rows.length;
+    const productCards = document.querySelectorAll(".product-card"); // Pilih elemen .product-card
+    const totalItems = productCards.length;
+    const itemsPerPage = 30; // Pastikan ini tetap 30 atau sesuai keinginan Anda
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    // Update visible items
-    rows.forEach((row, index) => {
-        row.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
+    // Update visible items (sekarang untuk product cards)
+    productCards.forEach((card, index) => {
+        card.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
     });
 
     // Update page number display
-    document.getElementById("pageInfo").textContent = `Page ${page} of ${totalPages}`;
+    document.getElementById("pageInfo").textContent = `Halaman ${page} dari ${totalPages}`; // Sesuaikan teks halaman
 
     // Enable/Disable navigation buttons
     document.getElementById("prevPage").disabled = page === 1;
