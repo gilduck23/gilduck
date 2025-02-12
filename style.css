@@ -387,3 +387,8 @@ footer.dark-theme {
     background: #ccc;
     cursor: not-allowed;
 }
+
+#productTable thead {
+    display: none;
+}
+
