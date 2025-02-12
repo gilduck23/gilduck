@@ -3,7 +3,7 @@ body {
     font-family: 'Nunito Sans', sans-serif; /* Font yang lebih modern */
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f0f2f5 0%, #e1e5ea 100%); /* Skema warna abu-abu lembut */
+    background: linear-gradient(135deg, #56ccf2, #2f80ed); /* Blue Sky */
     color: #333; /* Warna teks lebih gelap */
     text-align: center;
     display: flex;
@@ -14,9 +14,10 @@ body {
 }
 
 body.dark-theme {
-    background: linear-gradient(135deg, #333 0%, #222 100%); /* Skema warna gelap */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Midnight Galaxy */
     color: #eee;
 }
+
 
 h1 {
     font-size: 2.5rem; /* Ukuran judul sedikit dikecilkan */
