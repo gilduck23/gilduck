@@ -368,25 +368,50 @@ footer.dark-theme {
 
 /* Pagination Buttons (tetap sama) */
 #prevPage, #nextPage {
-    padding: 10px 15px;
+    padding: 12px 18px;
     font-size: 1rem;
     border: none;
-    background: #4c6ef5; /* Warna tombol pagination */
+    background: linear-gradient(135deg, #56ccf2, #2f80ed); /* Gradient warna biru */
     color: white;
     cursor: pointer;
-    border-radius: 25px;
-    transition: background 0.3s;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #prevPage:hover, #nextPage:hover {
-    background: #3b5bdb; /* Warna hover tombol pagination */
+    background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 #prevPage:disabled, #nextPage:disabled {
     background: #ccc;
     cursor: not-allowed;
+    box-shadow: none;
 }
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#pageInfo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
 
 #productTable thead {
     display: none;
