@@ -173,17 +173,14 @@ function changePage(offset) {
 // Add pagination buttons
 document.addEventListener("DOMContentLoaded", function () {
     const paginationContainer = document.createElement("div");
+    paginationContainer.className = "pagination-container";
     paginationContainer.innerHTML = `
-        <button id="prevPage" onclick="changePage(-1)">Previous</button>
+        <button id="prevPage" onclick="changePage(-1)">⬅️ Previous</button>
         <span id="pageInfo">Page ${currentPage}</span>
-        <button id="nextPage" onclick="changePage(1)">Next</button>
+        <button id="nextPage" onclick="changePage(1)">Next ➡️</button>
     `;
-    paginationContainer.style.margin = "20px 0";
-    paginationContainer.style.display = "flex";
-    paginationContainer.style.justifyContent = "center";
-    paginationContainer.style.gap = "10px";
 
     document.body.appendChild(paginationContainer);
-
     showPage(currentPage);
 });
+
