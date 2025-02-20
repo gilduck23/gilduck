@@ -88,7 +88,7 @@ themeToggle.addEventListener('click', () => {
     filterButtons.forEach(button => button.classList.toggle('dark-theme'));
     table.classList.toggle('dark-theme');
     ths.forEach(th => th.classList.toggle('dark-theme'));
-    tds.forEach(td => td.classList.toggle('dark-theme'));
+    tds.forEach(td => tds.classList.toggle('dark-theme'));
     footer.classList.toggle('dark-theme');
     modalContent.classList.toggle('dark-theme');
     themeToggle.classList.toggle('dark-theme');
@@ -183,4 +183,3 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(paginationContainer);
     showPage(currentPage);
 });
-
