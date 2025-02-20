@@ -5,28 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Produk</title>
-    <link rel="stylesheet" href="style.css"> <!-- Hubungkan file CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-gradient-to-br from-sky-400 to-blue-600 text-gray-700 text-center flex flex-col items-center min-h-screen transition-colors dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-700 dark:text-gray-200">
 
-    <h1>Daftar Produk</h1>
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-5 mb-7 text-blue-500 dark:text-sky-300 bg-white dark:bg-gray-800 px-5 py-2 rounded-lg shadow-md backdrop-blur-sm border border-blue-300 dark:border-sky-700 transition-all uppercase tracking-wider leading-relaxed">
+        Daftar Produk
+    </h1>
 
-   <button id="theme-toggle" aria-label="Ubah Tema">☀️</button>
+   <button id="theme-toggle" aria-label="Ubah Tema" class="fixed top-5 right-5 w-10 h-10 rounded-full bg-white dark:bg-gray-800 text-yellow-500 dark:text-yellow-200 border-none cursor-pointer text-2xl flex items-center justify-center transition-colors hover:scale-110 shadow-md focus:outline-none"></button>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="searchProducts()">
+    <div class="search-container mt-5 mb-7">
+        <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="searchProducts()" class="px-5 py-2 border border-gray-300 dark:border-gray-600 rounded-full w-full max-w-sm bg-white dark:bg-gray-900 backdrop-blur-sm transition-all text-sm focus:border-blue-500 focus:ring-blue-500 outline-none text-gray-700 dark:text-gray-300">
     </div>
 
-    <div class="filter-buttons">
-        <button onclick="filterTable('d-series')">D Series</button>
-        <button onclick="filterTable('b-series')">B Series</button>
-        <button onclick="filterTable('c-series')">C Series</button>
-        <button onclick="filterTable('hp-series')">HP Series</button>
-        <button onclick="filterTable('stiker-series')">Stiker Series</button>
+    <div class="filter-buttons flex flex-wrap justify-center gap-2 mb-5">
+        <button onclick="filterTable('d-series')" class="px-4 py-2 border border-blue-500 dark:border-sky-300 bg-white dark:bg-gray-800 text-blue-500 dark:text-sky-300 cursor-pointer rounded-full transition-all font-semibold text-sm backdrop-blur-sm shadow-sm hover:bg-blue-500 hover:text-white dark:hover:bg-sky-300 dark:hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-sky-300">D Series</button>
+        <button onclick="filterTable('b-series')" class="px-4 py-2 border border-blue-500 dark:border-sky-300 bg-white dark:bg-gray-800 text-blue-500 dark:text-sky-300 cursor-pointer rounded-full transition-all font-semibold text-sm backdrop-blur-sm shadow-sm hover:bg-blue-500 hover:text-white dark:hover:bg-sky-300 dark:hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-sky-300">B Series</button>
+        <button onclick="filterTable('c-series')" class="px-4 py-2 border border-blue-500 dark:border-sky-300 bg-white dark:bg-gray-800 text-blue-500 dark:text-sky-300 cursor-pointer rounded-full transition-all font-semibold text-sm backdrop-blur-sm shadow-sm hover:bg-blue-500 hover:text-white dark:hover:bg-sky-300 dark:hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-sky-300">C Series</button>
+        <button onclick="filterTable('hp-series')" class="px-4 py-2 border border-blue-500 dark:border-sky-300 bg-white dark:bg-gray-800 text-blue-500 dark:text-sky-300 cursor-pointer rounded-full transition-all font-semibold text-sm backdrop-blur-sm shadow-sm hover:bg-blue-500 hover:text-white dark:hover:bg-sky-300 dark:hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-sky-300">HP Series</button>
+        <button onclick="filterTable('stiker-series')" class="px-4 py-2 border border-blue-500 dark:border-sky-300 bg-white dark:bg-gray-800 text-blue-500 dark:text-sky-300 cursor-pointer rounded-full transition-all font-semibold text-sm backdrop-blur-sm shadow-sm hover:bg-blue-500 hover:text-white dark:hover:bg-sky-300 dark:hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-sky-300">Stiker Series</button>
     </div>
 
-<table id="productTable">
+<table id="productTable" class="hidden">
     <thead>
         <tr>
             <th>Produk</th>
@@ -34,514 +37,520 @@
             <th>Isi Produk</th>
         </tr>
     </thead>
-            <div class="product-grid" id="productGrid">
+            <div class="product-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full max-w-6xl mx-auto px-5 py-5 bg-white dark:bg-gray-800 backdrop-blur-md rounded-xl shadow-lg transition-colors">
         <!-- Produk D Series -->
-        <div class="product-card d-series">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739191970/d1_hcux42.webp" alt="D1" onclick="openModal(this.src, this.alt)">
-            <h3>D1</h3>
-            <p>3 Putih + Emas + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739191970/d1_hcux42.webp" alt="D1" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D1</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Emas + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/7g7lvvo.jpg" alt="D2" onclick="openModal(this.src, this.alt)">
-            <h3>D2</h3>
-            <p>5 Putih + Emas + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/7g7lvvo.jpg" alt="D2" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D2</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Emas + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/8DZ79n9.jpg" alt="D3" onclick="openModal(this.src, this.alt)">
-            <h3>D3</h3>
-            <p>3 Putih + Hitam + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/8DZ79n9.jpg" alt="D3" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D3</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Hitam + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/bDzl8YW.jpg" alt="D4" onclick="openModal(this.src, this.alt)">
-            <h3>D4</h3>
-            <p>5 Putih + Hitam + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/bDzl8YW.jpg" alt="D4" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D4</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Hitam + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/ldyeb9o.jpg" alt="D5" onclick="openModal(this.src, this.alt)">
-            <h3>D5</h3>
-            <p>3 Hitam + Emas + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/ldyeb9o.jpg" alt="D5" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D5</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Emas + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/JPPDMwx.jpg" alt="D6" onclick="openModal(this.src, this.alt)">
-            <h3>D6</h3>
-            <p>5 Hitam + Emas + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/JPPDMwx.jpg" alt="D6" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D6</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Emas + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/xlvaYRW.jpg" alt="D7" onclick="openModal(this.src, this.alt)">
-            <h3>D7</h3>
-            <p>3 Hitam + Hitam + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/xlvaYRW.jpg" alt="D7" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D7</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Hitam + Hangtag</p>
         </div>
-        <div class="product-card d-series">
-            <img src="https://i.imgur.com/fF0ayei.jpg" alt="D8" onclick="openModal(this.src, this.alt)">
-            <h3>D8</h3>
-            <p>5 Hitam + Hitam + Hangtag</p>
+        <div class="product-card d-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/fF0ayei.jpg" alt="D8" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">D8</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Hitam + Hangtag</p>
         </div>
 
         <!-- Produk B Series -->
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/B9VoERG.jpg" alt="B1" onclick="openModal(this.src, this.alt)">
-            <h3>B1</h3>
-            <p>3 Hitam + Emas</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/B9VoERG.jpg" alt="B1" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B1</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Emas</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/dt3Evi0.jpg" alt="B2" onclick="openModal(this.src, this.alt)">
-            <h3>B2</h3>
-            <p>5 Hitam + Emas</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/dt3Evi0.jpg" alt="B2" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B2</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Emas</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/Dn4vDIS.jpg" alt="B3" onclick="openModal(this.src, this.alt)">
-            <h3>B3</h3>
-            <p>3 Putih + Emas</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/Dn4vDIS.jpg" alt="B3" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B3</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Emas</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/ef1hkZ6.jpg" alt="B4" onclick="openModal(this.src, this.alt)">
-            <h3>B4</h3>
-            <p>5 Putih + Emas</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/ef1hkZ6.jpg" alt="B4" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B4</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Emas</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/VfLoEiJ.jpg" alt="B5" onclick="openModal(this.src, this.alt)">
-            <h3>B5</h3>
-            <p>3 Putih + Hitam</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/VfLoEiJ.jpg" alt="B5" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B5</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Hitam</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/FGdXoAo.jpg" alt="B6" onclick="openModal(this.src, this.alt)">
-            <h3>B6</h3>
-            <p>5 Putih + Hitam</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/FGdXoAo.jpg" alt="B6" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B6</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Hitam</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/3qQomol.jpg" alt="B7" onclick="openModal(this.src, this.alt)">
-            <h3>B7</h3>
-            <p>3 Hitam + Hitam</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/3qQomol.jpg" alt="B7" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B7</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Hitam</p>
         </div>
-        <div class="product-card b-series">
-            <img src="https://i.imgur.com/3ABMKui.jpg" alt="B8" onclick="openModal(this.src, this.alt)">
-            <h3>B8</h3>
-            <p>5 Hitam + Hitam</p>
+        <div class="product-card b-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/3ABMKui.jpg" alt="B8" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">B8</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Hitam</p>
         </div>
 
         <!-- Produk HP Series -->
-        <div class="product-card hp-series">
-            <img src="https://i.imgur.com/VmXwTQG.jpg" alt="HP01" onclick="openModal(this.src, this.alt)">
-            <h3>HP01</h3>
-            <p>Hitam</p>
+        <div class="product-card hp-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/VmXwTQG.jpg" alt="HP01" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">HP01</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Hitam</p>
         </div>
-        <div class="product-card hp-series">
-            <img src="https://i.imgur.com/wcv7oHz.jpg" alt="HP02" onclick="openModal(this.src, this.alt)">
-            <h3>HP02</h3>
-            <p>Putih</p>
+        <div class="product-card hp-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/wcv7oHz.jpg" alt="HP02" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">HP02</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Putih</p>
         </div>
-        <div class="product-card hp-series">
-            <img src="https://i.imgur.com/6wwpahF.jpg" alt="HP03" onclick="openModal(this.src, this.alt)">
-            <h3>HP03</h3>
-            <p>Merah</p>
+        <div class="product-card hp-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/6wwpahF.jpg" alt="HP03" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">HP03</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Merah</p>
         </div>
 
         <!-- Produk C Series -->
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/LghwQOT.jpg" alt="C1" onclick="openModal(this.src, this.alt)">
-            <h3>C1</h3>
-            <p>3 Putih + Emas + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/LghwQOT.jpg" alt="C1" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C1</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Emas + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/aJqqKI2.jpg" alt="C2" onclick="openModal(this.src, this.alt)">
-            <h3>C2</h3>
-            <p>3 Putih + Hitam + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/aJqqKI2.jpg" alt="C2" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C2</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Putih + Hitam + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/0LCqyiQ.jpg" alt="C3" onclick="openModal(this.src, this.alt)">
-            <h3>C3</h3>
-            <p>5 Putih + Emas + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/0LCqyiQ.jpg" alt="C3" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C3</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Emas + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/4L3w2k3.jpg" alt="C4" onclick="openModal(this.src, this.alt)">
-            <h3>C4</h3>
-            <p>5 Putih + Hitam + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/4L3w2k3.jpg" alt="C4" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C4</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Putih + Hitam + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/85zcGiK.jpg" alt="C5" onclick="openModal(this.src, this.alt)">
-            <h3>C5</h3>
-            <p>3 Hitam + Emas + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/85zcGiK.jpg" alt="C5" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C5</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Emas + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/TbNPFvG.jpg" alt="C6" onclick="openModal(this.src, this.alt)">
-            <h3>C6</h3>
-            <p>3 Hitam + Hitam + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/TbNPFvG.jpg" alt="C6" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C6</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">3 Hitam + Hitam + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/kjiY4Kj.jpg" alt="C7" onclick="openModal(this.src, this.alt)">
-            <h3>C7</h3>
-            <p>5 Hitam + Emas + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/kjiY4Kj.jpg" alt="C7" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C7</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Emas + Barcode</p>
         </div>
-        <div class="product-card c-series">
-            <img src="https://i.imgur.com/Ax0rG1X.jpg" alt="C8" onclick="openModal(this.src, this.alt)">
-            <h3>C8</h3>
-            <p>5 Hitam + Hitam + Barcode</p>
+        <div class="product-card c-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://i.imgur.com/Ax0rG1X.jpg" alt="C8" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">C8</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">5 Hitam + Hitam + Barcode</p>
         </div>
 
         <!-- Produk Stiker Series -->
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r991-lolxfnw42iyh8f@resize_w450_nl.webp" alt="Set 5" onclick="openModal(this.src, this.alt)">
-            <h3>Set 5</h3>
-            <p>Set 5</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r991-lolxfnw42iyh8f@resize_w450_nl.webp" alt="Set 5" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Set 5</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Set 5</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lolxfnw45c3d3f@resize_w450_nl.webp" alt="Set 7" onclick="openModal(this.src, this.alt)">
-            <h3>Set 7</h3>
-            <p>Set 7</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lolxfnw45c3d3f@resize_w450_nl.webp" alt="Set 7" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Set 7</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Set 7</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lolxfnw49jsp75.webp" alt="Set 9" onclick="openModal(this.src, this.alt)">
-            <h3>Set 9</h3>
-            <p>Set 9</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lolxfnw49jsp75.webp" alt="Set 9" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Set 9</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Set 9</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/sg-11134201-23010-gnj9lgc6lhmv67@resize_w450_nl.webp" alt="Thankyou 500" onclick="openModal(this.src, this.alt)">
-            <h3>Thankyou 500</h3>
-            <p>Stiker thankyou isi 500</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/sg-11134201-23010-gnj9lgc6lhmv67@resize_w450_nl.webp" alt="Thankyou 500" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Thankyou 500</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Stiker thankyou isi 500</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98z-ly5zkg5hh0im12@resize_w450_nl.webp" alt="Open Me" onclick="openModal(this.src, this.alt)">
-            <h3>Open Me</h3>
-            <p>Stiker Open Me</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98z-ly5zkg5hh0im12@resize_w450_nl.webp" alt="Open Me" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Open Me</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Stiker Open Me</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lolxfnw414p3d0@resize_w450_nl.webp" alt="Home Made" onclick="openModal(this.src, this.alt)">
-            <h3>Home Made</h3>
-            <p>Stiker Home Made</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lolxfnw414p3d0@resize_w450_nl.webp" alt="Home Made" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Home Made</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Stiker Home Made</p>
         </div>
-        <div class="product-card stiker-series">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lolxfnw42j9j48@resize_w450_nl.webp" alt="Thankyou" onclick="openModal(this.src, this.alt)">
-            <h3>Thankyou</h3>
-            <p>Stiker Thankyou</p>
+        <div class="product-card stiker-series flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lolxfnw42j9j48@resize_w450_nl.webp" alt="Thankyou" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Thankyou</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Stiker Thankyou</p>
         </div>
 
         <!-- Produk Kwitansi PPL Mini -->
-        <div class="product-card kwitansi-ppl-mini">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lmpeuptuvm4471@resize_w450_nl.webp" alt="Kwitansi PPL Mini" onclick="openModal(this.src, this.alt)">
-            <h3>Kwitansi PPL Mini</h3>
-            <p>Kwitansi PPL Mini</p>
+        <div class="product-card kwitansi-ppl-mini flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98s-lmpeuptuvm4471@resize_w450_nl.webp" alt="Kwitansi PPL Mini" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Kwitansi PPL Mini</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Kwitansi PPL Mini</p>
         </div>
 
         <!-- Produk Isolasi STAR -->
-        <div class="product-card isolasi-star">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasf-m3vit7m7b00z9d@resize_w450_nl.webp" alt="Isolasi STAR" onclick="openModal(this.src, this.alt)">
-            <h3>Isolasi STAR</h3>
-            <p>Isolasi STAR</p>
+        <div class="product-card isolasi-star flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasf-m3vit7m7b00z9d@resize_w450_nl.webp" alt="Isolasi STAR" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Isolasi STAR</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Isolasi STAR</p>
         </div>
 
         <!-- Produk Lakban Fresh Vegetables -->
-        <div class="product-card lakban-fresh-vegetables">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/f_auto/v1739194222/6193f204-9339-4a74-b439-3f4d1693deba_cf68se.jpg" alt="Lakban Fresh Vegetables" onclick="openModal(this.src, this.alt)">
-            <h3>Lakban Fresh Vegetables</h3>
-            <p>Lakban Fresh Vegetables</p>
+        <div class="product-card lakban-fresh-vegetables flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/f_auto/v1739194222/6193f204-9339-4a74-b439-3f4d1693deba_cf68se.jpg" alt="Lakban Fresh Vegetables" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Lakban Fresh Vegetables</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Lakban Fresh Vegetables</p>
         </div>
         <!-- Produk HARGA POLOS -->
-        <div class="product-card HARGA POLOS">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)">
-            <h3>HARGA POLOS</h3>
-            <p>HARGA POLOS</p>
+        <div class="product-card HARGA POLOS flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98q-lpenjpnnyefi61@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">HARGA POLOS</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">HARGA POLOS</p>
         </div>
         <!-- Produk BRG YG SUDAH DIBELI -->
-        <div class="product-card BRG YG SUDAH DIBELI">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lpenjpnnrdlac1" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)">
-            <h3>BRG YG SUDAH DIBELI</h3>
-            <p>BRG YG SUDAH DIBELI</p>
+        <div class="product-card BRG YG SUDAH DIBELI flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lpenjpnnrdlac1" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">BRG YG SUDAH DIBELI</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">BRG YG SUDAH DIBELI</p>
         </div>
-        <div class="product-card Kertas Aluminium Foil BESTFRESH">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739194922/id-11134207-7r98v-lxugklejdq96cc_resize_w450_nl_dl20of.webp" alt="Kertas Aluminium Foil BESTFRESH" onclick="openModal(this.src, this.alt)">
-            <h3>Kertas Aluminium Foil BESTFRESH</h3>
-            <p>Kertas Aluminium Foil BESTFRESH</p>
-        </div>
-        <!-- Produk HARGA POLOS -->
-        <div class="product-card Tusuk Gigi Bambu">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rash-m4zihp9t1od982@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)">
-            <h3>Tusuk Gigi Bambu</h3>
-            <p>Tusuk Gigi Bambu</p>
+        <div class="product-card Kertas Aluminium Foil BESTFRESH flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739194922/id-11134207-7r98v-lxugklejdq96cc_resize_w450_nl_dl20of.webp" alt="Kertas Aluminium Foil BESTFRESH" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Kertas Aluminium Foil BESTFRESH</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Kertas Aluminium Foil BESTFRESH</p>
         </div>
         <!-- Produk HARGA POLOS -->
-        <div class="product-card HARGA POLOS">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m53og49xsfl483@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)">
-            <h3>ALAT CUKUR KUMIS</h3>
-            <p>ALAT CUKUR KUMIS</p>
+        <div class="product-card Tusuk Gigi Bambu flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rash-m4zihp9t1od982@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Tusuk Gigi Bambu</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Tusuk Gigi Bambu</p>
+        </div>
+        <!-- Produk HARGA POLOS -->
+        <div class="product-card HARGA POLOS flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m53og49xsfl483@resize_w450_nl.webp" alt="HARGA POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">ALAT CUKUR KUMIS</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">ALAT CUKUR KUMIS</p>
         </div>
         <!-- Produk Baru -->
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739195786/id-11134207-7r98w-lwf2rhoz5c9n7c_resize_w450_nl_gxiki7.webp" alt="Spidol PM 31-32-33" onclick="openModal(this.src, this.alt)">
-            <h3>Spidol PM 31-32-33</h3>
-            <p>Spidol Joyko PM Hitam Biru Merah</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739195786/id-11134207-7r98w-lwf2rhoz5c9n7c_resize_w450_nl_gxiki7.webp" alt="Spidol PM 31-32-33" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spidol PM 31-32-33</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Spidol Joyko PM Hitam Biru Merah</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739196116/id-11134207-7r98t-loddhv6zz2ps62_resize_w450_nl_botxoz.webp" alt="Spidol PM 34-35-36" onclick="openModal(this.src, this.alt)">
-            <h3>Spidol PM 34-35-36</h3>
-            <p>Spidol Joyko PM Hitam Biru Merah</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739196116/id-11134207-7r98t-loddhv6zz2ps62_resize_w450_nl_botxoz.webp" alt="Spidol PM 34-35-36" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spidol PM 34-35-36</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Spidol Joyko PM Hitam Biru Merah</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197533/id-11134207-7qul7-lgvq1e0epe1fa1_resize_w450_nl_k0aioa.webp" alt="Spidol AG12" onclick="openModal(this.src, this.alt)">
-            <h3>Spidol AG12</h3>
-            <p>Paket isi 5 pcs Spidol AG12</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197533/id-11134207-7qul7-lgvq1e0epe1fa1_resize_w450_nl_k0aioa.webp" alt="Spidol AG12" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spidol AG12</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Paket isi 5 pcs Spidol AG12</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197735/id-11134207-7qul3-lig0hjcm5ogxe3_resize_w450_nl_wntmbm.webp" alt="STABILLO HIGHLIGHTER" onclick="openModal(this.src, this.alt)">
-            <h3>STABILLO HIGHLIGHTER</h3>
-            <p>STABILLO HIGHLIGHTER</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197735/id-11134207-7qul3-lig0hjcm5ogxe3_resize_w450_nl_wntmbm.webp" alt="STABILLO HIGHLIGHTER" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">STABILLO HIGHLIGHTER</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">STABILLO HIGHLIGHTER</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197837/id-11134207-7rasj-m4s5clt4gcdfb9_resize_w450_nl_ew6ftr.webp" alt="Spidol SPM-88" onclick="openModal(this.src, this.alt)">
-            <h3>Spidol SPM-88</h3>
-            <p>Spidol SPM-88</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197837/id-11134207-7rasj-m4s5clt4gcdfb9_resize_w450_nl_ew6ftr.webp" alt="Spidol SPM-88" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spidol SPM-88</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Spidol SPM-88</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197898/id-11134207-7ras9-m49qro5kgtka22_resize_w450_nl_afsvum.webp" alt="Spidol Tahan Air" onclick="openModal(this.src, this.alt)">
-            <h3>Spidol Tahan Air</h3>
-            <p>Spidol Tahan Air</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739197898/id-11134207-7ras9-m49qro5kgtka22_resize_w450_nl_afsvum.webp" alt="Spidol Tahan Air" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spidol Tahan Air</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Spidol Tahan Air</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198201/id-11134207-7rasl-m2klz5xm5kov88_resize_w450_nl_ddlfhf.webp" alt="Metallic Craftwork" onclick="openModal(this.src, this.alt)">
-            <h3>Metallic Craftwork</h3>
-            <p>Metallic Craftwork</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198201/id-11134207-7rasl-m2klz5xm5kov88_resize_w450_nl_ddlfhf.webp" alt="Metallic Craftwork" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Metallic Craftwork</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Metallic Craftwork</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198371/id-11134207-7r98o-lo0iqjbmvikab6_resize_w450_nl_yct9v6.webp" alt="2 PCS Spidol Kecil" onclick="openModal(this.src, this.alt)">
-            <h3>2 PCS Spidol Kecil</h3>
-            <p>ARTLINE Pencil Marker EK-316</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198371/id-11134207-7r98o-lo0iqjbmvikab6_resize_w450_nl_yct9v6.webp" alt="2 PCS Spidol Kecil" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">2 PCS Spidol Kecil</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">ARTLINE Pencil Marker EK-316</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198432/id-11134207-7r98t-lvsku5p9ajw9e5_resize_w450_nl_wtuz2w.webp" alt="Penghapus Spidol Papan Tulis" onclick="openModal(this.src, this.alt)">
-            <h3>Penghapus Spidol Papan Tulis</h3>
-            <p>JOYKO WE-3</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198432/id-11134207-7r98t-lvsku5p9ajw9e5_resize_w450_nl_wtuz2w.webp" alt="Penghapus Spidol Papan Tulis" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Penghapus Spidol Papan Tulis</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">JOYKO WE-3</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198527/id-11134207-7rasg-m57wvi07jajaa1_resize_w450_nl_u8iprr.webp" alt="Jililai 3in1 Alat Cukur Jenggot" onclick="openModal(this.src, this.alt)">
-            <h3>Jililai 3in1 Alat Cukur Jenggot</h3>
-            <p>Jililai 3in1 Alat Cukur Jenggot</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://res.cloudinary.com/dwext19lv/image/upload/v1739198527/id-11134207-7rasg-m57wvi07jajaa1_resize_w450_nl_u8iprr.webp" alt="Jililai 3in1 Alat Cukur Jenggot" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Jililai 3in1 Alat Cukur Jenggot</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Jililai 3in1 Alat Cukur Jenggot</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasl-m49qv0vrk8ws86@resize_w450_nl.webp" alt="Pisau Kuter Kecil" onclick="openModal(this.src, this.alt)">
-            <h3>Pisau Kuter Kecil</h3>
-            <p>2 pcs Pisau Kuter Kecil</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasl-m49qv0vrk8ws86@resize_w450_nl.webp" alt="Pisau Kuter Kecil" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Pisau Kuter Kecil</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">2 pcs Pisau Kuter Kecil</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r992-ln7epm0qgw5d28@resize_w450_nl.webp" alt="Pisau Lipat Mini/Kecil" onclick="openModal(this.src, this.alt)">
-            <h3>Pisau Lipat Mini/Kecil</h3>
-            <p>12 pcs Pisau Lipat Mini/Kecil</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r992-ln7epm0qgw5d28@resize_w450_nl.webp" alt="Pisau Lipat Mini/Kecil" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Pisau Lipat Mini/Kecil</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">12 pcs Pisau Lipat Mini/Kecil</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m5z505p1s7k0b5@resize_w450_nl.webp" alt="Dimmer SCR 2000W Regulator" onclick="openModal(this.src, this.alt)">
-            <h3>Dimmer SCR 2000W Regulator</h3>
-            <p>Dimmer SCR 2000W Regulator</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m5z505p1s7k0b5@resize_w450_nl.webp" alt="Dimmer SCR 2000W Regulator" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Dimmer SCR 2000W Regulator</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Dimmer SCR 2000W Regulator</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/sg-11134201-22110-45twasdv3tjv2f@resize_w450_nl.webp" alt="Spring Shoe Tree Shoes" onclick="openModal(this.src, this.alt)">
-            <h3>Spring Shoe Tree Shoes</h3>
-            <p>Spring Shoe Tree Shoes</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/sg-11134201-22110-45twasdv3tjv2f@resize_w450_nl.webp" alt="Spring Shoe Tree Shoes" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Spring Shoe Tree Shoes</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Spring Shoe Tree Shoes</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m61z0pnzf2jc67@resize_w450_nl.webp" alt="Rompi safety Karet" onclick="openModal(this.src, this.alt)">
-            <h3>Rompi safety Karet</h3>
-            <p>Rompi safety Karet Safety Vest</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m61z0pnzf2jc67@resize_w450_nl.webp" alt="Rompi safety Karet" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Rompi safety Karet</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Rompi safety Karet Safety Vest</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m5z4dznjgpae17@resize_w450_nl.webp" alt="Mini Hot Gun" onclick="openModal(this.src, this.alt)">
-            <h3>Mini Hot Gun</h3>
-            <p>Mini Hot Gun</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m5z4dznjgpae17@resize_w450_nl.webp" alt="Mini Hot Gun" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Mini Hot Gun</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Mini Hot Gun</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/91c0879e547993e8016629a24a6f79e1@resize_w450_nl.webp" alt="Palu Sidang" onclick="openModal(this.src, this.alt)">
-            <h3>Palu Sidang</h3>
-            <p>Palu Sidang</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/91c0879e547993e8016629a24a6f79e1@resize_w450_nl.webp" alt="Palu Sidang" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Palu Sidang</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Palu Sidang</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lxxbinspk8d78e@resize_w450_nl.webp" alt="penjepit kertas Bulldog" onclick="openModal(this.src, this.alt)">
-            <h3>penjepit kertas Bulldog</h3>
-            <p>penjepit kertas Bulldog Clip JOYKO 6-145</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lxxbinspk8d78e@resize_w450_nl.webp" alt="penjepit kertas Bulldog" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">penjepit kertas Bulldog</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">penjepit kertas Bulldog Clip JOYKO 6-145</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m555agfzjifa94@resize_w450_nl.webp" alt="Asbak Rokok" onclick="openModal(this.src, this.alt)">
-            <h3>Asbak Rokok</h3>
-            <p>Asbak Rokok Stainless 12 cm</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasg-m555agfzjifa94@resize_w450_nl.webp" alt="Asbak Rokok" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Asbak Rokok</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Asbak Rokok Stainless 12 cm</p>
         </div>
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lyd2xqsndo0rca@resize_w900_nl.webp" alt="Asbak Rokok" onclick="openModal(this.src, this.alt)">
-            <h3>Senter Hiking kemah</h3>
-            <p>Senter LED JoykoFL-91</p>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-lyd2xqsndo0rca@resize_w900_nl.webp" alt="Asbak Rokok" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Senter Hiking kemah</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Senter LED JoykoFL-91</p>
          </div>
-          <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk2-m6693p7peql2c9@resize_w450_nl.webp" alt="SAUDI KAMPER" onclick="openModal(this.src, this.alt)">
-            <h3>SAUDI KAMPER</h3>
-            <p>SAUDI KAMPER</p>
+          <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk2-m6693p7peql2c9@resize_w450_nl.webp" alt="SAUDI KAMPER" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">SAUDI KAMPER</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">SAUDI KAMPER</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk0-m6693p7p3i1icd@resize_w450_nl.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)">
-            <h3>Songkok Hitam AWANG</h3>
-            <p>Songkok Hitam AWANG No.6 AC Tinggi 8 9</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk0-m6693p7p3i1icd@resize_w450_nl.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Songkok Hitam AWANG</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Songkok Hitam AWANG No.6 AC Tinggi 8 9</p>
         </div>
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m61z1jgnxjy842.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)">
-            <h3>Tasbih Mini Digital</h3>
-            <p>1 pcs Tasbih Mini Digital</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m61z1jgnxjy842.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Tasbih Mini Digital</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">1 pcs Tasbih Mini Digital</p>
         </div>
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk7-m67iptqpao8w79.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)">
-            <h3>SERIT SISIR KUTU</h3>
-            <p>SERIT SISIR KUTU</p>
-           </div>     
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m622zl52lr869d@resize_w450_nl.webp" alt="Kain Lap Cendol" onclick="openModal(this.src, this.alt)">
-            <h3>Kain Lap Cendol</h3>
-            <p>Kain Lap Cendol Sarung Tangan Microfiber</p>
-        </div>      
-         <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasf-m555agfzchl2b1@resize_w450_nl.webp" alt="Pijit Leher Elektrik" onclick="openModal(this.src, this.alt)">
-            <h3>Pijit Leher Elektrik</h3>
-            <p>Smart Neck Message</p>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk7-m67iptqpao8w79.webp" alt="Songkok Hitam AWANG" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">SERIT SISIR KUTU</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">SERIT SISIR KUTU</p>
+           </div>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m622zl52lr869d@resize_w450_nl.webp" alt="Kain Lap Cendol" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Kain Lap Cendol</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Kain Lap Cendol Sarung Tangan Microfiber</p>
+        </div>
+         <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasf-m555agfzchl2b1@resize_w450_nl.webp" alt="Pijit Leher Elektrik" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Pijit Leher Elektrik</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Smart Neck Message</p>
         </div>
         <!-- Produk Tambahan -->
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rase-m64wngp4kq8j55@resize_w450_nl.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)">
-            <h3>Kalkulator CT-7212</h3>
-            <p>Kalkulator CT-7212</p>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rase-m64wngp4kq8j55@resize_w450_nl.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Kalkulator CT-7212</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Kalkulator CT-7212</p>
         </div>
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m4zfkgjrkwu83e.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)">
-            <h3>Kran Air Plastik Warna STABILO</h3>
-            <p>Kran Air Plastik Warna STABILO ENGKOL BIASA 1/2”</p>
-           </div>  
-            <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbka-m694rue5oatv2c.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)">
-            <h3>SISIR HITAM</h3>
-            <p>SISIR HITAM DOUBLE 1 paket ISI 2</p>
-            </div> 
-              <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbkb-m693p3o6wy2qda.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)">
-            <h3>Gunting DAPUR</h3>
-            <p>Gunting DAPUR</p>
-              </div>  
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m64vxzgcje1ffe@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>Intercom Helm Bluetooth</h3>
-            <p>Nama Produk: intercom helm Nomor model barang:  y10 Versi Bluetooth: 5.0</p>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m4zfkgjrkwu83e.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Kran Air Plastik Warna STABILO</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Kran Air Plastik Warna STABILO ENGKOL BIASA 1/2”</p>
+           </div>
+            <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbka-m694rue5oatv2c.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">SISIR HITAM</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">SISIR HITAM DOUBLE 1 paket ISI 2</p>
+            </div>
+              <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbkb-m693p3o6wy2qda.webp" alt="Kalkulator CT-7212" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Gunting DAPUR</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Gunting DAPUR</p>
+              </div>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m64vxzgcje1ffe@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Intercom Helm Bluetooth</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Nama Produk: intercom helm Nomor model barang:  y10 Versi Bluetooth: 5.0</p>
         </div>
-          <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbke-m693p3o6kayq44@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>LAP DAPUR KAWAT</h3>
-            <p>LAP DAPUR KAWAT</p>
+          <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbke-m693p3o6kayq44@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">LAP DAPUR KAWAT</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">LAP DAPUR KAWAT</p>
         </div>
-                
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7ras8-m63dejqxky3h7c@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>KAIN LAP DAPUR ANTI MINYAK</h3>
-            <p>KAIN LAP DAPUR ANTI MINYAK</p>
+
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7ras8-m63dejqxky3h7c@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">KAIN LAP DAPUR ANTI MINYAK</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">KAIN LAP DAPUR ANTI MINYAK</p>
         </div>
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbka-m67iptqpc2tc33@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>kaca mata renang anak</h3>
-            <p>kaca mata renang anak</p>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbka-m67iptqpc2tc33@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">kaca mata renang anak</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">kaca mata renang anak</p>
         </div>
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk4-m67iptqpj3nk12@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>tisue meja SEE U</h3>
-            <p>tisue meja SEE U menyerap minyak 150 sheet</p>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk4-m67iptqpj3nk12@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">tisue meja SEE U</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">tisue meja SEE U menyerap minyak 150 sheet</p>
         </div>
-           <div class="product-card">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m488vdo9sofu2c@resize_w450_nl.webp" alt="Permen FOXS" onclick="openModal(this.src, this.alt)">
-           <h3>Permen FOXS</h3>
-           <p>Permen FOXS Banyak Rasa 125gr</p>
+           <div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m488vdo9sofu2c@resize_w450_nl.webp" alt="Permen FOXS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+           <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Permen FOXS</h3>
+           <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Permen FOXS Banyak Rasa 125gr</p>
            </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/88a4c7c143d6ed50f30ba87e4919cdf9@resize_w450_nl.webp" alt="Joyko Highlighter" onclick="openModal(this.src, this.alt)">
-    <h3>Joyko Highlighter</h3>
-    <p>Joyko Highlighter Double Color Penanda Berwarna 2 Tip Warna</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/88a4c7c143d6ed50f30ba87e4919cdf9@resize_w450_nl.webp" alt="Joyko Highlighter" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Joyko Highlighter</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Joyko Highlighter Double Color Penanda Berwarna 2 Tip Warna</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98t-lpenjpnnu6q624@resize_w450_nl.webp" alt="PANTAU CCTV" onclick="openModal(this.src, this.alt)">
-    <h3>PANTAU CCTV</h3>
-    <p>PANTAU CCTV</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98t-lpenjpnnu6q624@resize_w450_nl.webp" alt="PANTAU CCTV" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">PANTAU CCTV</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">PANTAU CCTV</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98z-lpenjpnnwzv2c4@resize_w450_nl.webp" alt="OBRAL POLOS TULIS" onclick="openModal(this.src, this.alt)">
-    <h3>OBRAL POLOS TULIS</h3>
-    <p>OBRAL POLOS TULIS</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98z-lpenjpnnwzv2c4@resize_w450_nl.webp" alt="OBRAL POLOS TULIS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">OBRAL POLOS TULIS</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">OBRAL POLOS TULIS</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lpenjpnnzszyad@resize_w450_nl.webp" alt="HARGA SPESIAL POLOS" onclick="openModal(this.src, this.alt)">
-    <h3>HARGA SPESIAL POLOS</h3>
-    <p>HARGA SPESIAL POLOS</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lpenjpnnzszyad@resize_w450_nl.webp" alt="HARGA SPESIAL POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">HARGA SPESIAL POLOS</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">HARGA SPESIAL POLOS</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lpenjpno17ke0c@resize_w450_nl.webp" alt="GROSIR POLOS" onclick="openModal(this.src, this.alt)">
-    <h3>GROSIR POLOS</h3>
-    <p>GROSIR POLOS</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lpenjpno17ke0c@resize_w450_nl.webp" alt="GROSIR POLOS" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">GROSIR POLOS</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">GROSIR POLOS</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lpenjpno2m4uec@resize_w450_nl.webp" alt="MOHON LEPAS SANDAL" onclick="openModal(this.src, this.alt)">
-    <h3>MOHON LEPAS SANDAL</h3>
-    <p>MOHON LEPAS SANDAL</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-lpenjpno2m4uec@resize_w450_nl.webp" alt="MOHON LEPAS SANDAL" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">MOHON LEPAS SANDAL</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">MOHON LEPAS SANDAL</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98w-lpenjpnneqht8f@resize_w450_nl.webp" alt="PERHATIAN LIST" onclick="openModal(this.src, this.alt)">
-    <h3>PERHATIAN LIST</h3>
-    <p>PERHATIAN LIST</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98w-lpenjpnneqht8f@resize_w450_nl.webp" alt="PERHATIAN LIST" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">PERHATIAN LIST</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">PERHATIAN LIST</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98v-lpenjpnner5j4f@resize_w450_nl.webp" alt="DI JUAL" onclick="openModal(this.src, this.alt)">
-    <h3>DI JUAL</h3>
-    <p>DI JUAL</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98v-lpenjpnner5j4f@resize_w450_nl.webp" alt="DI JUAL" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">DI JUAL</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">DI JUAL</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98t-lpenjpnng5pz46@resize_w450_nl.webp" alt="DIKONTRAKAN" onclick="openModal(this.src, this.alt)">
-    <h3>DIKONTRAKAN</h3>
-    <p>DIKONTRAKAN</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98t-lpenjpnng5pz46@resize_w450_nl.webp" alt="DIKONTRAKAN" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">DIKONTRAKAN</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">DIKONTRAKAN</p>
 </div>
 
-<div class="product-card">
-    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98x-lpenjpnnn6k75e@resize_w450_nl.webp" alt="KOST" onclick="openModal(this.src, this.alt)">
-    <h3>KOST</h3>
-    <p>KOST</p>
-</div>  
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m4xy7zczacv15e@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>sumpit bambu</h3>
-            <p>sumpit bambu steril isi 50</p>
-        </div>     
-           <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m4i9yae01bf050@resize_w900_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>ACTION FIGURE DEMON SLAYER</h3>
-            <p>Nama Produk:ACTION FIGURE DEMON SLAYER</p>
+<div class="product-card flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98x-lpenjpnnn6k75e@resize_w450_nl.webp" alt="KOST" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">KOST</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">KOST</p>
+</div>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasm-m4xy7zczacv15e@resize_w450_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">sumpit bambu</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">sumpit bambu steril isi 50</p>
+        </div>
+           <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m4i9yae01bf050@resize_w900_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">ACTION FIGURE DEMON SLAYER</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Nama Produk:ACTION FIGURE DEMON SLAYER</p>
            </div>
-             <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m4i9yae06xos88@resize_w900_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)">
-            <h3>Crayon Candy Murah 12 Warna</h3>
-            <p>Nama Produk:Krayon Squeezy / Oil Pastel CC-0417</p>
-             </div>   
-        <div class="product-card new-product">
-            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m64wngp4aw9f7d@resize_w450_nl.webp" alt="NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm" onclick="openModal(this.src, this.alt)">
-            <h3>NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm</h3>
-            <p>NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm</p>
+             <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m4i9yae06xos88@resize_w900_nl.webp" alt="Intercom Helm Bluetooth" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">Crayon Candy Murah 12 Warna</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">Nama Produk:Krayon Squeezy / Oil Pastel CC-0417</p>
+             </div>
+        <div class="product-card new-product flex flex-col p-4 rounded-lg bg-white dark:bg-gray-700 shadow-md transition-transform cursor-pointer hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-sky-400">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasd-m64wngp4aw9f7d@resize_w450_nl.webp" alt="NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm" onclick="openModal(this.src, this.alt)" class="w-full h-auto rounded-md mb-2 transition-all object-cover aspect-square hover:scale-105">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 transition-colors">NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors">NFC Bluetooth 5.0 Audio Receiver RCA 3.5mm</p>
         </div>
     </div>
     </table>
 
-    <footer>
+    <footer class="mt-auto py-5 text-sm text-gray-600 dark:text-gray-400 transition-colors">
         © 2025 Daftar Produk | Dibuat oleh Gilduck
     </footer>
 
-    <div class="modal" onclick="closeModal()">
-        <span class="close-modal" onclick="closeModal()">×</span>
-        <div class="modal-content">
-            <img class="modal-image" id="modalImage" src="" alt="Modal Image">
+    <div class="modal hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 justify-center items-center z-50" onclick="closeModal()">
+        <span class="close-modal absolute top-4 right-4 text-white text-4xl cursor-pointer z-50" onclick="closeModal()">×</span>
+        <div class="modal-content max-w-5xl max-h-5xl bg-white dark:bg-gray-800 rounded-lg shadow-xl">
+            <img class="modal-image w-full h-auto cursor-pointer" id="modalImage" src="" alt="Modal Image">
         </div>
     </div>
 
-    <script src="script.js"></script> <!-- Hubungkan file JavaScript -->
+    <div class="pagination-container flex items-center justify-center gap-3 mt-5">
+        <button id="prevPage" onclick="changePage(-1)" class="px-4 py-2 font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-blue-500 hover:to-sky-400 rounded-full shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed">⬅️ Previous</button>
+        <span id="pageInfo" class="text-lg font-bold text-white px-4 py-2 rounded-full bg-black bg-opacity-20">Page 1 of 1</span>
+        <button id="nextPage" onclick="changePage(1)" class="px-4 py-2 font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-blue-500 hover:to-sky-400 rounded-full shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed">Next ➡️</button>
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 
