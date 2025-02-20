@@ -104,12 +104,12 @@ themeToggle.addEventListener('click', () => {
 
 // Pagination Variables
 let currentPage = 1;
-const itemsPerPage = 32;
+const itemsPerPage = 30;
 
 function showPage(page) {
     const productCards = document.querySelectorAll(".product-card");
     const totalItems = productCards.length;
-    const itemsPerPage = 32; // Sudah diubah menjadi 32
+    const itemsPerPage = 30; // Sudah diubah menjadi 32
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     console.log("Halaman:", page); // Tambahkan log halaman saat ini
