@@ -99,50 +99,16 @@ themeToggle.addEventListener('click', () => {
     console.log('Initial filterTable("") call complete.'); // Check if this logs
 
   });
-
-  console.log('Script execution started.'); // Check if this logs
-
-// Pagination Variables
-let currentPage = 1;
-const itemsPerPage = 30;
-
-function showPage(page) {
-    const productCards = document.querySelectorAll(".product-card");
-    const totalItems = productCards.length;
-    const itemsPerPage = 30; // Sudah diubah menjadi 32
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-
     console.log("Halaman:", page); // Tambahkan log halaman saat ini
     console.log("Total Item:", totalItems); // Tambahkan log total item
     console.log("Item per Halaman:", itemsPerPage); // Tambahkan log item per halaman
     console.log("Total Halaman:", totalPages); // Tambahkan log total halaman
 
     productCards.forEach((card, index) => {
-        const shouldBeVisible = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage);
-        console.log(`Produk ke-${index + 1} (Halaman ${page}):`, shouldBeVisible ? "Tampil" : "Tersembunyi"); // Log status produk
-        card.classList.toggle('hidden', !shouldBeVisible);
+        card.classList.toggle('hidden', !(index >= (page - 1) * itemsPerPage && index < page * itemsPerPage));
     });
 
     document.getElementById("pageInfo").textContent = `Halaman ${page} dari ${totalPages}`;
-    document.getElementById("prevPage").disabled = page === 1;
-    document.getElementById("nextPage").disabled = page === totalPages;
+    document.getElementById("prevPage").disabled = currentPage === 1; // Menggunakan currentPage bukan page
+    document.getElementById("nextPage").disabled = currentPage === totalPages; // Menggunakan currentPage bukan page
 }
-
-function changePage(offset) {
-    currentPage += offset;
-    showPage(currentPage);
-}
-
-// Add pagination buttons
-document.addEventListener("DOMContentLoaded", function () {
-    const paginationContainer = document.createElement("div");
-    paginationContainer.className = "pagination-container";
-    paginationContainer.innerHTML = `
-        <button id="prevPage" onclick="changePage(-1)">⬅️ Previous</button>
-        <span id="pageInfo">Page ${currentPage}</span>
-        <button id="nextPage" onclick="changePage(1)">Next ➡️</button>
-    `;
-
-    document.body.appendChild(paginationContainer);
-    showPage(currentPage);
-});
